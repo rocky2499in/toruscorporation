@@ -25,7 +25,7 @@ const slides = [
     title: "Technology Transfer",
     description: "Partner with us to access cutting-edge explosive technology and manufacturing expertise.",
     link: "/technology-transfer",
-    bgImage: "/lovable-uploads/cf29c540-fce4-4192-82ca-d7dfbdc58d69.png"
+    bgImage: "/lovable-uploads/d392e7cf-bd63-4e75-ac87-617cc79c6189.png"
   }
 ];
 
