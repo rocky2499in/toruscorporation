@@ -1,12 +1,12 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Flask, Atom, Shield } from "lucide-react";
+import { Atom, Shield, Beaker } from "lucide-react";
 
 const AmmoniumPerchlorate = () => {
   const features = [
     {
       title: "Production Technology",
       description: "State-of-the-art manufacturing process for high-purity ammonium perchlorate",
-      icon: Flask,
+      icon: Beaker,
     },
     {
       title: "Quality Control",

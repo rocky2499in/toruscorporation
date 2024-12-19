@@ -1,13 +1,13 @@
 import { Link } from "react-router-dom";
 import { Card, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
-import { Flask, Atom, Rocket, Beaker, Zap } from "lucide-react";
+import { Beaker, Atom, Rocket, Zap } from "lucide-react";
 
 const TechnologyTransfer = () => {
   const technologies = [
     {
       title: "TNT Manufacturing",
       description: "Advanced TNT production technology with focus on safety and efficiency",
-      icon: Flask,
+      icon: Beaker,
       path: "/technology-transfer/tnt"
     },
     {
@@ -19,13 +19,13 @@ const TechnologyTransfer = () => {
     {
       title: "Ammonium Perchlorate",
       description: "State-of-the-art ammonium perchlorate production technology",
-      icon: Beaker,
+      icon: Zap,
       path: "/technology-transfer/ammonium-perchlorate"
     },
     {
       title: "Nitrocellulose",
       description: "Advanced nitrocellulose manufacturing process and know-how",
-      icon: Zap,
+      icon: Beaker,
       path: "/technology-transfer/nitrocellulose"
     },
     {
