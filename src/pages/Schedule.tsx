@@ -14,7 +14,7 @@ const Schedule = () => {
         <CardContent>
           <div className="w-full h-[600px]">
             <InlineWidget
-              url="https://calendly.com/d/demo"
+              url="https://calendly.com/kinematic-digital/technology-consulting-introduction"
               styles={{
                 height: '100%',
                 width: '100%',
