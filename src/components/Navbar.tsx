@@ -1,6 +1,19 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Menu, X } from "lucide-react";
+import { 
+  Menu, 
+  X, 
+  Home,
+  Info,
+  Shield,
+  Target,
+  Rocket,
+  Briefcase,
+  Calendar,
+  Phone,
+  LogIn,
+  LayoutDashboard
+} from "lucide-react";
 import LoginDialog from "./auth/LoginDialog";
 
 const Navbar = () => {
@@ -9,18 +22,18 @@ const Navbar = () => {
   const isAdmin = localStorage.getItem("isAdmin");
 
   const menuItems = [
-    { title: "Home", path: "/" },
-    { title: "About Us", path: "/about" },
-    { title: "Defence Products", path: "/defence-products" },
-    { title: "Sports Ammunition", path: "/sports-ammunition" },
-    { title: "Technologies", path: "/technologies" },
-    { title: "Work With Us", path: "/work-with-us" },
-    { title: "Schedule a Call", path: "/schedule" },
-    { title: "Contact", path: "/contact" },
+    { title: "Home", path: "/", icon: <Home size={18} /> },
+    { title: "About Us", path: "/about", icon: <Info size={18} /> },
+    { title: "Defence Products", path: "/defence-products", icon: <Shield size={18} /> },
+    { title: "Sports Ammunition", path: "/sports-ammunition", icon: <Target size={18} /> },
+    { title: "Technologies", path: "/technologies", icon: <Rocket size={18} /> },
+    { title: "Work With Us", path: "/work-with-us", icon: <Briefcase size={18} /> },
+    { title: "Schedule a Call", path: "/schedule", icon: <Calendar size={18} /> },
+    { title: "Contact", path: "/contact", icon: <Phone size={18} /> },
   ];
 
   return (
-    <nav className="bg-secondary py-4 fixed w-full top-0 z-50">
+    <nav className="bg-secondary py-4 fixed w-full top-0 z-50 shadow-lg">
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center">
           <Link to="/" className="flex items-center">
@@ -37,31 +50,40 @@ const Navbar = () => {
               <Link
                 key={item.path}
                 to={item.path}
-                className="text-white hover:text-primary transition-colors"
+                className="text-white hover:text-primary transition-colors flex items-center gap-2 group"
               >
-                {item.title}
+                <span className="group-hover:scale-110 transition-transform duration-200">
+                  {item.icon}
+                </span>
+                <span>{item.title}</span>
               </Link>
             ))}
             {isAdmin ? (
               <Link
                 to="/admin/dashboard"
-                className="text-white hover:text-primary transition-colors"
+                className="text-white hover:text-primary transition-colors flex items-center gap-2 group"
               >
-                Dashboard
+                <span className="group-hover:scale-110 transition-transform duration-200">
+                  <LayoutDashboard size={18} />
+                </span>
+                <span>Dashboard</span>
               </Link>
             ) : (
               <button
                 onClick={() => setIsLoginOpen(true)}
-                className="text-white hover:text-primary transition-colors"
+                className="text-white hover:text-primary transition-colors flex items-center gap-2 group"
               >
-                Login
+                <span className="group-hover:scale-110 transition-transform duration-200">
+                  <LogIn size={18} />
+                </span>
+                <span>Login</span>
               </button>
             )}
           </div>
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden text-white"
+            className="md:hidden text-white hover:text-primary transition-colors"
             onClick={() => setIsOpen(!isOpen)}
           >
             {isOpen ? <X size={24} /> : <Menu size={24} />}
@@ -70,24 +92,26 @@ const Navbar = () => {
 
         {/* Mobile Menu */}
         {isOpen && (
-          <div className="md:hidden mt-4 bg-secondary">
-            <div className="flex flex-col space-y-4 py-4">
+          <div className="md:hidden mt-4 bg-secondary/95 backdrop-blur-sm rounded-lg shadow-xl border border-white/10">
+            <div className="flex flex-col space-y-2 py-4">
               {menuItems.map((item) => (
                 <Link
                   key={item.path}
                   to={item.path}
-                  className="text-white hover:text-primary transition-colors px-4"
+                  className="text-white hover:text-primary hover:bg-white/5 transition-colors px-4 py-2 flex items-center gap-3"
                   onClick={() => setIsOpen(false)}
                 >
+                  {item.icon}
                   {item.title}
                 </Link>
               ))}
               {isAdmin ? (
                 <Link
                   to="/admin/dashboard"
-                  className="text-white hover:text-primary transition-colors px-4"
+                  className="text-white hover:text-primary hover:bg-white/5 transition-colors px-4 py-2 flex items-center gap-3"
                   onClick={() => setIsOpen(false)}
                 >
+                  <LayoutDashboard size={18} />
                   Dashboard
                 </Link>
               ) : (
@@ -96,8 +120,9 @@ const Navbar = () => {
                     setIsOpen(false);
                     setIsLoginOpen(true);
                   }}
-                  className="text-white hover:text-primary transition-colors px-4 text-left"
+                  className="text-white hover:text-primary hover:bg-white/5 transition-colors px-4 py-2 flex items-center gap-3 w-full text-left"
                 >
+                  <LogIn size={18} />
                   Login
                 </button>
               )}
