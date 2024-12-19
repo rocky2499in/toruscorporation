@@ -52,7 +52,7 @@ const HeroSection = () => {
   }, [api]);
 
   return (
-    <div className="pt-24 bg-secondary relative overflow-hidden min-h-screen"> {/* Changed to min-h-screen and removed pb-16 */}
+    <div className="relative overflow-hidden min-h-screen"> {/* Removed pt-24 and bg-secondary */}
       {/* Bullet animation elements */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="bullet-trail absolute h-1 w-8 bg-primary rounded-full animate-bullet-1"></div>
@@ -60,9 +60,9 @@ const HeroSection = () => {
         <div className="bullet-trail absolute h-1 w-8 bg-primary rounded-full animate-bullet-3"></div>
       </div>
       
-      <div className="container mx-auto px-4 relative z-10 h-full">
+      <div className="relative z-10 h-full">
         <Carousel 
-          className="w-full max-w-5xl mx-auto h-full" 
+          className="w-full h-full" 
           opts={{ loop: true }} 
           setApi={setApi}
         >
@@ -70,7 +70,7 @@ const HeroSection = () => {
             {slides.map((slide, index) => (
               <CarouselItem key={index} className="h-full">
                 <div 
-                  className="text-center animate-fade-up p-6 min-h-[calc(100vh-6rem)] flex flex-col items-center justify-center relative" // Changed to calc(100vh-6rem) to account for navbar
+                  className="text-center animate-fade-up min-h-screen flex flex-col items-center justify-center relative" 
                   style={{
                     backgroundImage: `url(${slide.bgImage})`,
                     backgroundSize: 'cover',
