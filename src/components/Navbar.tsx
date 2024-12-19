@@ -8,7 +8,7 @@ import MobileMenu from "./navbar/MobileMenu";
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isLoginOpen, setIsLoginOpen] = useState(false);
-  const isAdmin = localStorage.getItem("isAdmin");
+  const isAdmin = localStorage.getItem("isAdmin") === "true";
 
   return (
     <nav className="bg-secondary py-4 fixed w-full top-0 z-50 shadow-lg">
