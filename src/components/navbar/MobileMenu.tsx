@@ -14,16 +14,39 @@ const MobileMenu = ({ isOpen, isAdmin, onLoginClick, onItemClick }: MobileMenuPr
   if (!isOpen) return null;
 
   return (
-    <div className="md:hidden mt-4 bg-secondary/95 backdrop-blur-sm rounded-lg shadow-xl border border-white/10">
-      <div className="flex flex-col space-y-2 py-4">
+    <div className="md:hidden mt-4 bg-secondary/95 backdrop-blur-sm rounded-lg shadow-xl border border-white/10 p-4">
+      <div className="flex flex-col space-y-4">
         {menuItems.map((item) => (
-          <NavbarMenuItem
-            key={item.path}
-            title={item.title}
-            path={item.path}
-            icon={item.icon}
-            onClick={onItemClick}
-          />
+          <div key={item.path} className="space-y-2">
+            {item.submenu ? (
+              <>
+                <div className="text-white flex items-center gap-2">
+                  <item.icon size={18} />
+                  <span>{item.title}</span>
+                </div>
+                <div className="pl-6 space-y-2">
+                  {item.submenu.map((subItem) => (
+                    <Link
+                      key={subItem.title}
+                      to={subItem.path}
+                      className="text-white/80 hover:text-primary transition-colors flex items-center gap-2"
+                      onClick={onItemClick}
+                    >
+                      {subItem.icon && <subItem.icon size={16} />}
+                      {subItem.title}
+                    </Link>
+                  ))}
+                </div>
+              </>
+            ) : (
+              <NavbarMenuItem
+                title={item.title}
+                path={item.path}
+                icon={item.icon}
+                onClick={onItemClick}
+              />
+            )}
+          </div>
         ))}
         {isAdmin ? (
           <Link

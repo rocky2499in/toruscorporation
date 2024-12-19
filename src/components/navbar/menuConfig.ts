@@ -5,9 +5,9 @@ import {
   Rocket,
   Component,
   Phone,
-  Calendar,
-  Briefcase,
-  ShoppingCart
+  ShoppingCart,
+  User,
+  PhoneCall
 } from "lucide-react";
 
 export const menuItems = [
@@ -32,9 +32,21 @@ export const menuItems = [
     path: "/contact",
     icon: Phone,
     submenu: [
-      { title: "Procurement Assistance", path: "/contact" },
-      { title: "Work With Us", path: "/contact" },
-      { title: "Schedule a Call", path: "/contact" }
+      { 
+        title: "Procurement Assistance", 
+        path: "/contact",
+        icon: ShoppingCart
+      },
+      { 
+        title: "Work With Us", 
+        path: "/contact",
+        icon: User
+      },
+      { 
+        title: "Schedule a Call", 
+        path: "/contact",
+        icon: PhoneCall
+      }
     ]
   }
 ];
