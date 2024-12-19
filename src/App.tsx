@@ -17,6 +17,9 @@ import AmmoniumPerchlorate from "./pages/technology-transfer/AmmoniumPerchlorate
 import NitrocelluloseProduction from "./pages/technology-transfer/NitrocelluloseProduction";
 import PropellantPortfolio from "./pages/technology-transfer/PropellantPortfolio";
 import TechnologyTransfer from "./pages/TechnologyTransfer";
+import Dashboard from "./pages/admin/Dashboard";
+import DealPipeline from "./pages/admin/DealPipeline";
+import Settings from "./pages/admin/Settings";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -50,6 +53,10 @@ const App = () => {
                   <Route path="/technology-transfer/nitrocellulose" element={<NitrocelluloseProduction />} />
                   <Route path="/technology-transfer/propellants" element={<PropellantPortfolio />} />
                   <Route path="/contact/*" element={<Contact />} />
+                  {/* Admin Routes */}
+                  <Route path="/admin/dashboard" element={<Dashboard />} />
+                  <Route path="/admin/deals" element={<DealPipeline />} />
+                  <Route path="/admin/settings" element={<Settings />} />
                 </Routes>
               </main>
               <Footer />
