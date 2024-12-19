@@ -14,6 +14,7 @@ export const menuItems = [
   { title: "Home", path: "/", icon: Home },
   { title: "About Us", path: "/about", icon: Info },
   { title: "Products", path: "/products", icon: Package },
+  { title: "Components", path: "/components", icon: Component },
   { 
     title: "Technology Transfer", 
     path: "/technology-transfer",
@@ -26,7 +27,6 @@ export const menuItems = [
       { title: "Propellants", path: "/technology-transfer/propellants" }
     ]
   },
-  { title: "Components", path: "/components", icon: Component },
   { 
     title: "Contact", 
     path: "/contact",
