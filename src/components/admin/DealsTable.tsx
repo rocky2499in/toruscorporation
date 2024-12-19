@@ -66,72 +66,74 @@ const DealsTable = ({
     });
 
   return (
-    <div className="overflow-x-auto">
-      <Table>
-        <TableHeader>
-          <TableRow className="bg-gray-50">
-            <TableHead className="font-semibold">Company</TableHead>
-            <TableHead className="font-semibold">Contact Person</TableHead>
-            <TableHead className="font-semibold">Value</TableHead>
-            <TableHead className="font-semibold">Probability</TableHead>
-            <TableHead className="font-semibold">Stage</TableHead>
-            <TableHead className="font-semibold">Next Action</TableHead>
-            <TableHead className="font-semibold">Next Action Date</TableHead>
-            <TableHead className="font-semibold">Notes</TableHead>
-          </TableRow>
-        </TableHeader>
-        <TableBody>
-          {filteredDeals.map((deal) => (
-            <TableRow key={deal.id} className="hover:bg-gray-50">
-              <TableCell className="font-medium">{deal.companyName}</TableCell>
-              <TableCell>
-                <div>{deal.contactPerson}</div>
-                <div className="text-sm text-gray-500">{deal.email}</div>
-              </TableCell>
-              <TableCell className="font-medium">
-                ${deal.value.toLocaleString()}
-              </TableCell>
-              <TableCell>
-                <Badge variant="secondary" className="font-medium">
-                  {deal.probability}%
-                </Badge>
-              </TableCell>
-              <TableCell>
-                <Select
-                  value={deal.stage}
-                  onValueChange={(value) => onStageChange(deal.id, value)}
-                >
-                  <SelectTrigger className={`w-[140px] ${stageColors[deal.stage]}`}>
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="initial">Initial Contact</SelectItem>
-                    <SelectItem value="qualified">Qualified</SelectItem>
-                    <SelectItem value="proposal">Proposal</SelectItem>
-                    <SelectItem value="negotiation">Negotiation</SelectItem>
-                    <SelectItem value="closed">Closed Won</SelectItem>
-                    <SelectItem value="lost">Closed Lost</SelectItem>
-                  </SelectContent>
-                </Select>
-              </TableCell>
-              <TableCell>{deal.nextAction}</TableCell>
-              <TableCell>{deal.nextActionDate}</TableCell>
-              <TableCell className="max-w-xs">
-                <div className="truncate" title={deal.notes}>
-                  {deal.notes}
-                </div>
-              </TableCell>
+    <div className="rounded-lg border bg-white shadow-sm">
+      <div className="overflow-x-auto">
+        <Table>
+          <TableHeader>
+            <TableRow className="bg-gray-50/80">
+              <TableHead className="font-semibold text-gray-700 py-4">Company</TableHead>
+              <TableHead className="font-semibold text-gray-700">Contact Person</TableHead>
+              <TableHead className="font-semibold text-gray-700">Value</TableHead>
+              <TableHead className="font-semibold text-gray-700">Probability</TableHead>
+              <TableHead className="font-semibold text-gray-700">Stage</TableHead>
+              <TableHead className="font-semibold text-gray-700">Next Action</TableHead>
+              <TableHead className="font-semibold text-gray-700">Next Action Date</TableHead>
+              <TableHead className="font-semibold text-gray-700">Notes</TableHead>
             </TableRow>
-          ))}
-          {filteredDeals.length === 0 && (
-            <TableRow>
-              <TableCell colSpan={8} className="text-center py-8 text-gray-500">
-                No deals found
-              </TableCell>
-            </TableRow>
-          )}
-        </TableBody>
-      </Table>
+          </TableHeader>
+          <TableBody>
+            {filteredDeals.map((deal) => (
+              <TableRow key={deal.id} className="hover:bg-gray-50/50 transition-colors">
+                <TableCell className="font-medium text-gray-900">{deal.companyName}</TableCell>
+                <TableCell>
+                  <div className="text-gray-900">{deal.contactPerson}</div>
+                  <div className="text-sm text-gray-500">{deal.email}</div>
+                </TableCell>
+                <TableCell className="font-medium text-gray-900">
+                  ${deal.value.toLocaleString()}
+                </TableCell>
+                <TableCell>
+                  <Badge variant="secondary" className="font-medium">
+                    {deal.probability}%
+                  </Badge>
+                </TableCell>
+                <TableCell>
+                  <Select
+                    value={deal.stage}
+                    onValueChange={(value) => onStageChange(deal.id, value)}
+                  >
+                    <SelectTrigger className={`w-[140px] ${stageColors[deal.stage]}`}>
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="initial">Initial Contact</SelectItem>
+                      <SelectItem value="qualified">Qualified</SelectItem>
+                      <SelectItem value="proposal">Proposal</SelectItem>
+                      <SelectItem value="negotiation">Negotiation</SelectItem>
+                      <SelectItem value="closed">Closed Won</SelectItem>
+                      <SelectItem value="lost">Closed Lost</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </TableCell>
+                <TableCell className="text-gray-900">{deal.nextAction}</TableCell>
+                <TableCell className="text-gray-900">{deal.nextActionDate}</TableCell>
+                <TableCell className="max-w-xs">
+                  <div className="truncate text-gray-600" title={deal.notes}>
+                    {deal.notes}
+                  </div>
+                </TableCell>
+              </TableRow>
+            ))}
+            {filteredDeals.length === 0 && (
+              <TableRow>
+                <TableCell colSpan={8} className="text-center py-8 text-gray-500">
+                  No deals found
+                </TableCell>
+              </TableRow>
+            )}
+          </TableBody>
+        </Table>
+      </div>
     </div>
   );
 };

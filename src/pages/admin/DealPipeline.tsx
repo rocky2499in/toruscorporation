@@ -32,7 +32,7 @@ const DealPipeline = () => {
   };
 
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="container mx-auto px-4 py-8 mt-20">
       <div className="flex justify-between items-center mb-6">
         <h1 className="text-2xl font-bold text-gray-900">Deal Pipeline</h1>
       </div>
@@ -51,16 +51,14 @@ const DealPipeline = () => {
           onImportDeals={handleImportDeals}
         />
 
-        <div className="bg-white rounded-lg shadow-sm overflow-hidden">
-          <DealsTable
-            deals={deals}
-            onStageChange={updateDealStage}
-            sortBy={sortBy}
-            sortOrder={sortOrder}
-            stageFilter={stageFilter}
-            searchTerm={searchTerm}
-          />
-        </div>
+        <DealsTable
+          deals={deals}
+          onStageChange={updateDealStage}
+          sortBy={sortBy}
+          sortOrder={sortOrder}
+          stageFilter={stageFilter}
+          searchTerm={searchTerm}
+        />
       </div>
 
       <NewDealDialog

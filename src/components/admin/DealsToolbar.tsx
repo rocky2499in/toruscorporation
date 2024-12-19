@@ -89,22 +89,22 @@ const DealsToolbar = ({
   };
 
   return (
-    <div className="flex flex-col gap-4 mb-6 bg-white p-4 rounded-lg shadow-sm">
-      <div className="flex flex-wrap gap-4 items-center justify-between">
-        <div className="flex-1 min-w-[300px]">
+    <div className="space-y-4 bg-white p-6 rounded-lg shadow-sm border mb-6">
+      <div className="flex flex-col lg:flex-row gap-4 items-start lg:items-center justify-between">
+        <div className="flex-1 min-w-[300px] w-full lg:w-auto">
           <div className="relative">
-            <Search className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" />
             <Input
               placeholder="Search deals..."
               value={searchTerm}
               onChange={(e) => onSearchChange(e.target.value)}
-              className="pl-10"
+              className="pl-10 w-full bg-white"
             />
           </div>
         </div>
-        <div className="flex flex-wrap gap-2">
+        <div className="flex flex-wrap gap-3 w-full lg:w-auto">
           <Select value={stageFilter} onValueChange={onStageFilterChange}>
-            <SelectTrigger className="w-[180px]">
+            <SelectTrigger className="w-[180px] bg-white">
               <SelectValue placeholder="Filter by stage" />
             </SelectTrigger>
             <SelectContent>
@@ -121,7 +121,7 @@ const DealsToolbar = ({
             value={sortBy}
             onValueChange={(value) => onSortByChange(value as keyof Deal)}
           >
-            <SelectTrigger className="w-[180px]">
+            <SelectTrigger className="w-[180px] bg-white">
               <SelectValue placeholder="Sort by" />
             </SelectTrigger>
             <SelectContent>
@@ -131,19 +131,19 @@ const DealsToolbar = ({
               <SelectItem value="nextActionDate">Next Action Date</SelectItem>
             </SelectContent>
           </Select>
-          <Button variant="outline" onClick={onSortOrderChange}>
+          <Button variant="outline" onClick={onSortOrderChange} className="bg-white">
             <SlidersHorizontal className="mr-2 h-4 w-4" />
             {sortOrder === "asc" ? "Ascending" : "Descending"}
           </Button>
         </div>
       </div>
-      <div className="flex flex-wrap gap-2 items-center">
+      <div className="flex flex-wrap gap-3 items-center pt-2">
         <Button onClick={onNewDeal} className="bg-primary hover:bg-primary/90">
           <PlusCircle className="mr-2 h-4 w-4" />
           Add New Deal
         </Button>
         <div className="flex gap-2">
-          <Button variant="outline" onClick={downloadSampleTemplate}>
+          <Button variant="outline" onClick={downloadSampleTemplate} className="bg-white">
             <Download className="mr-2 h-4 w-4" />
             Download Template
           </Button>
@@ -154,7 +154,7 @@ const DealsToolbar = ({
               onChange={handleFileUpload}
               className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
             />
-            <Button variant="outline">
+            <Button variant="outline" className="bg-white">
               <Upload className="mr-2 h-4 w-4" />
               Import Deals
             </Button>
