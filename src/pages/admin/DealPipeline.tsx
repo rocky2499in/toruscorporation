@@ -15,7 +15,7 @@ const DealPipeline = () => {
   const handleAddDeal = (dealData: Omit<Deal, "id" | "profit">) => {
     addDeal({
       ...dealData,
-      currency: dealData.currency,
+      currency: dealData.currency || "USD",
       margin: dealData.margin,
       marginType: dealData.marginType,
       endUserCountry: dealData.endUserCountry,
