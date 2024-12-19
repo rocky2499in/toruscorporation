@@ -37,7 +37,7 @@ const CommitmentSection = () => {
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-3xl mx-auto">
-          <div className="text-center mb-12">
+          <div className="text-center mb-12 animate-fade-up">
             <h2 className="text-4xl font-bold text-white mb-4">
               OUR COMMITMENT TO EXCELLENCE
             </h2>
@@ -46,9 +46,13 @@ const CommitmentSection = () => {
 
           <div className="grid md:grid-cols-2 gap-8">
             {commitments.map((commitment, index) => (
-              <div key={index} className="flex items-start gap-4 group">
-                <div className="p-3 rounded-lg bg-white/10 backdrop-blur-sm shadow-md group-hover:bg-primary transition-colors">
-                  <commitment.icon className="w-6 h-6 text-primary group-hover:text-white" />
+              <div 
+                key={index} 
+                className="flex items-start gap-4 group animate-fade-up hover:-translate-y-1 transition-transform duration-300"
+                style={{ animationDelay: `${index * 200}ms` }}
+              >
+                <div className="p-3 rounded-lg bg-white/10 backdrop-blur-sm shadow-md group-hover:bg-primary transition-all duration-300">
+                  <commitment.icon className="w-6 h-6 text-primary group-hover:text-white transition-colors duration-300" />
                 </div>
                 <div>
                   <h3 className="text-xl font-semibold mb-2 text-white">

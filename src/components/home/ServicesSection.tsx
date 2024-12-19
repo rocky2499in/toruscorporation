@@ -34,9 +34,10 @@ const ServicesSection = () => {
           {services.map((service, index) => (
             <div
               key={index}
-              className="p-6 border border-gray-200 rounded-lg hover:shadow-lg transition-shadow"
+              className="p-6 border border-gray-200 rounded-lg hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
+              style={{ animationDelay: `${index * 100}ms` }}
             >
-              <service.icon className="w-12 h-12 text-primary mb-4" />
+              <service.icon className="w-12 h-12 text-primary mb-4 transform transition-transform hover:scale-110 duration-300" />
               <h3 className="text-xl font-semibold mb-2 text-secondary">
                 {service.title}
               </h3>

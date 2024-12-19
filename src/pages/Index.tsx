@@ -10,15 +10,32 @@ import { Link } from "react-router-dom";
 const Index = () => {
   return (
     <div className="min-h-screen bg-white">
-      <HeroSection />
-      <ProductOverview />
-      <DefenceRangeSection />
-      <CommitmentSection />
-      <WhyChooseSection />
-      <ServicesSection />
+      <div className="animate-fade-up">
+        <HeroSection />
+      </div>
+      
+      <div className="animate-fade-up [animation-delay:200ms]">
+        <ProductOverview />
+      </div>
+      
+      <div className="animate-fade-up [animation-delay:400ms]">
+        <DefenceRangeSection />
+      </div>
+      
+      <div className="animate-fade-up [animation-delay:600ms]">
+        <CommitmentSection />
+      </div>
+      
+      <div className="animate-fade-up [animation-delay:800ms]">
+        <WhyChooseSection />
+      </div>
+      
+      <div className="animate-fade-up [animation-delay:1000ms]">
+        <ServicesSection />
+      </div>
       
       {/* CTA Section */}
-      <div className="py-16 bg-secondary">
+      <div className="py-16 bg-secondary animate-fade-up [animation-delay:1200ms]">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold text-white mb-6">
             Ready to Work Together?
@@ -29,7 +46,7 @@ const Index = () => {
           </p>
           <Button
             asChild
-            className="bg-primary hover:bg-primary/90 text-white"
+            className="bg-primary hover:bg-primary/90 text-white hover:scale-105 transition-transform duration-300"
           >
             <Link to="/contact">Contact Us</Link>
           </Button>

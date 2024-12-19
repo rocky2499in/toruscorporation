@@ -51,16 +51,20 @@ const DefenceRangeSection = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
-          {defenceProducts.map((product) => (
-            <div key={product.id} className="flex flex-col">
-              <div className="relative mb-4">
+          {defenceProducts.map((product, index) => (
+            <div 
+              key={product.id} 
+              className="flex flex-col hover:scale-105 transition-transform duration-300"
+              style={{ animationDelay: `${index * 100}ms` }}
+            >
+              <div className="relative mb-4 group">
                 <span className="absolute top-4 left-4 text-red-600 font-bold">
                   {product.id}
                 </span>
                 <img
                   src={product.image}
                   alt={product.title}
-                  className="w-full h-48 object-cover rounded-lg"
+                  className="w-full h-48 object-cover rounded-lg transition-transform duration-300 group-hover:scale-105"
                 />
               </div>
               <h3 className="text-xl font-bold mb-3">{product.title}</h3>
@@ -69,9 +73,9 @@ const DefenceRangeSection = () => {
               </p>
               <Link
                 to={product.link}
-                className="inline-flex items-center text-gray-800 hover:text-gray-600 transition-colors"
+                className="inline-flex items-center text-gray-800 hover:text-gray-600 transition-colors group"
               >
-                Learn More <ArrowRight className="ml-2 h-4 w-4" />
+                Learn More <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
               </Link>
             </div>
           ))}
