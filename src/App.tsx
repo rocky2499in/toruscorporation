@@ -22,37 +22,39 @@ import PropellantPortfolio from "./pages/technologies/PropellantPortfolio";
 import WorkWithUs from "./pages/WorkWithUs";
 import Schedule from "./pages/Schedule";
 
-const queryClient = new QueryClient();
+const App = () => {
+  const queryClient = new QueryClient();
 
-const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/about" element={<AboutUs />} />
-          <Route path="/defence-products" element={<DefenceProducts />} />
-          <Route path="/defence-products/small-caliber" element={<SmallCaliberAmmunition />} />
-          <Route path="/defence-products/medium-caliber" element={<MediumCaliberAmmunition />} />
-          <Route path="/defence-products/large-caliber" element={<LargeCaliberAmmunition />} />
-          <Route path="/defence-products/rockets-bombs" element={<RocketsAndBombs />} />
-          <Route path="/defence-products/mortar-bombs" element={<MortarBombs />} />
-          <Route path="/defence-products/explosives" element={<ExplosivesAndPropellants />} />
-          <Route path="/technologies" element={<Technologies />} />
-          <Route path="/technologies/tnt" element={<TNTManufacturing />} />
-          <Route path="/technologies/nitrocellulose" element={<NitrocelluloseProduction />} />
-          <Route path="/technologies/specialized" element={<SpecializedExplosives />} />
-          <Route path="/technologies/rdx" element={<RDXManufacturing />} />
-          <Route path="/technologies/propellants" element={<PropellantPortfolio />} />
-          <Route path="/work-with-us" element={<WorkWithUs />} />
-          <Route path="/schedule" element={<Schedule />} />
-        </Routes>
-      </BrowserRouter>
-    </TooltipProvider>
-  </QueryClientProvider>
-);
+  return (
+    <QueryClientProvider client={queryClient}>
+      <TooltipProvider>
+        <Toaster />
+        <Sonner />
+        <BrowserRouter>
+          <Navbar />
+          <Routes>
+            <Route path="/" element={<Index />} />
+            <Route path="/about" element={<AboutUs />} />
+            <Route path="/defence-products" element={<DefenceProducts />} />
+            <Route path="/defence-products/small-caliber" element={<SmallCaliberAmmunition />} />
+            <Route path="/defence-products/medium-caliber" element={<MediumCaliberAmmunition />} />
+            <Route path="/defence-products/large-caliber" element={<LargeCaliberAmmunition />} />
+            <Route path="/defence-products/rockets-bombs" element={<RocketsAndBombs />} />
+            <Route path="/defence-products/mortar-bombs" element={<MortarBombs />} />
+            <Route path="/defence-products/explosives" element={<ExplosivesAndPropellants />} />
+            <Route path="/technologies" element={<Technologies />} />
+            <Route path="/technologies/tnt" element={<TNTManufacturing />} />
+            <Route path="/technologies/nitrocellulose" element={<NitrocelluloseProduction />} />
+            <Route path="/technologies/specialized" element={<SpecializedExplosives />} />
+            <Route path="/technologies/rdx" element={<RDXManufacturing />} />
+            <Route path="/technologies/propellants" element={<PropellantPortfolio />} />
+            <Route path="/work-with-us" element={<WorkWithUs />} />
+            <Route path="/schedule" element={<Schedule />} />
+          </Routes>
+        </BrowserRouter>
+      </TooltipProvider>
+    </QueryClientProvider>
+  );
+};
 
 export default App;
