@@ -1,5 +1,30 @@
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+
+const slides = [
+  {
+    title: "Pioneering Explosive Products",
+    description: "Discover our comprehensive range of commercial and defence explosives, engineered for excellence and reliability.",
+    link: "/products"
+  },
+  {
+    title: "Advanced Components",
+    description: "Explore our specialized components designed for maximum performance and safety in explosive applications.",
+    link: "/components"
+  },
+  {
+    title: "Technology Transfer",
+    description: "Partner with us to access cutting-edge explosive technology and manufacturing expertise.",
+    link: "/technology-transfer"
+  }
+];
 
 const HeroSection = () => {
   return (
@@ -15,30 +40,39 @@ const HeroSection = () => {
       <div className="absolute inset-0 bg-black/75" />
       
       <div className="container mx-auto px-4 relative z-10">
-        <div className="max-w-3xl mx-auto text-center animate-fade-up">
-          <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
-            Pioneering Explosive Technology
-          </h1>
-          <p className="text-lg text-gray-300 mb-8">
-            Welcome to Torus Corporation, India's premier manufacturer and service
-            provider for commercial and defence explosives.
-          </p>
-          <div className="flex flex-wrap justify-center gap-4">
-            <Button
-              asChild
-              className="bg-primary hover:bg-primary/90 text-white"
-            >
-              <Link to="/defence-products">Explore Products</Link>
-            </Button>
-            <Button
-              asChild
-              variant="outline"
-              className="bg-transparent text-white hover:bg-white/10"
-            >
-              <Link to="/schedule">Schedule a Call</Link>
-            </Button>
-          </div>
-        </div>
+        <Carousel className="w-full max-w-5xl mx-auto" opts={{ loop: true }}>
+          <CarouselContent>
+            {slides.map((slide, index) => (
+              <CarouselItem key={index}>
+                <div className="text-center animate-fade-up p-6">
+                  <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
+                    {slide.title}
+                  </h1>
+                  <p className="text-lg text-gray-300 mb-8">
+                    {slide.description}
+                  </p>
+                  <div className="flex flex-wrap justify-center gap-4">
+                    <Button
+                      asChild
+                      className="bg-primary hover:bg-primary/90 text-white"
+                    >
+                      <Link to={slide.link}>Explore Products</Link>
+                    </Button>
+                    <Button
+                      asChild
+                      variant="outline"
+                      className="bg-transparent text-white hover:bg-white/10"
+                    >
+                      <Link to="/contact">Schedule a Call</Link>
+                    </Button>
+                  </div>
+                </div>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          <CarouselPrevious className="hidden md:flex -left-4 text-white border-white hover:bg-white/20" />
+          <CarouselNext className="hidden md:flex -right-4 text-white border-white hover:bg-white/20" />
+        </Carousel>
       </div>
     </div>
   );
