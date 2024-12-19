@@ -32,9 +32,9 @@ export const menuItems = [
     path: "/contact",
     icon: Phone,
     submenu: [
-      { title: "Procurement Assistance", path: "/contact/procurement" },
-      { title: "Work With Us", path: "/contact/work-with-us" },
-      { title: "Schedule a Call", path: "/contact/schedule" }
+      { title: "Procurement Assistance", path: "/contact" },
+      { title: "Work With Us", path: "/contact" },
+      { title: "Schedule a Call", path: "/contact" }
     ]
   }
 ];
