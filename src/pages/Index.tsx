@@ -2,6 +2,7 @@ import HeroSection from "@/components/home/HeroSection";
 import ProductOverview from "@/components/home/ProductOverview";
 import WhyChooseSection from "@/components/home/WhyChooseSection";
 import ServicesSection from "@/components/home/ServicesSection";
+import DefenceRangeSection from "@/components/home/DefenceRangeSection";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 
@@ -10,6 +11,7 @@ const Index = () => {
     <div className="min-h-screen bg-white">
       <HeroSection />
       <ProductOverview />
+      <DefenceRangeSection />
       <WhyChooseSection />
       <ServicesSection />
       
