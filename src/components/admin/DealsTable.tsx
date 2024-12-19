@@ -81,8 +81,8 @@ const DealsTable = ({
           <TableHeader>
             <TableRow className="bg-gray-50/80">
               <TableHead className="font-semibold text-gray-700 py-4">Company</TableHead>
-              <TableHead className="font-semibold text-gray-700">Contact Person</TableHead>
-              <TableHead className="font-semibold text-gray-700">End User Country</TableHead>
+              <TableHead className="font-semibold text-gray-700">Contact</TableHead>
+              <TableHead className="font-semibold text-gray-700">EUC</TableHead>
               <TableHead className="font-semibold text-gray-700">Value</TableHead>
               <TableHead className="font-semibold text-gray-700">Margin</TableHead>
               <TableHead className="font-semibold text-gray-700">Profit</TableHead>
