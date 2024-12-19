@@ -1,12 +1,12 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Flask, Droplets } from "lucide-react";
+import { FlaskConical, Droplets } from "lucide-react";
 
 const NitrocelluloseProduction = () => {
   const processes = [
     {
       title: "Nitrocellulose",
       description: "Advanced facilities for producing high-quality nitrocellulose, a key component in various explosive formulations. Our process ensures precise control over nitrogen content and viscosity.",
-      icon: Flask,
+      icon: FlaskConical,
       image: "https://images.unsplash.com/photo-1459767129954-1b1c1f9b9ace",
     },
     {

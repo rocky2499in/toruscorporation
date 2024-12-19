@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Card, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
-import { Factory, Flask, Atom, Rocket, Beaker } from "lucide-react";
+import { Factory, FlaskConical, Atom, Rocket, Beaker } from "lucide-react";
 
 const Technologies = () => {
   const technologies = [
@@ -14,7 +14,7 @@ const Technologies = () => {
     {
       title: "Nitrocellulose & Nitroglycerine",
       description: "Advanced facilities for high-quality nitrocellulose and nitroglycerine production",
-      icon: Flask,
+      icon: FlaskConical,
       path: "/technologies/nitrocellulose",
       image: "https://images.unsplash.com/photo-1488972685288-c3fd157d7c7a",
     },
