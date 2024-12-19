@@ -37,7 +37,7 @@ const HeroSection = () => {
 
     const interval = setInterval(() => {
       api.scrollNext();
-    }, 4000); // Auto scroll every 4 seconds
+    }, 6000); // Changed from 4000 to 6000 milliseconds (6 seconds)
 
     api.on("select", () => {
       setCurrent(api.selectedScrollSnap());
