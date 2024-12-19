@@ -24,7 +24,22 @@ const LoginDialog = ({ isOpen, onClose }: LoginDialogProps) => {
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
     
-    if (email === "connect@kinematic.digital" && password === "Havells@2441") {
+    const validCredentials = [
+      {
+        email: "connect@kinematic.digital",
+        password: "Havells@2441"
+      },
+      {
+        email: "manish.bhat@torus.eu",
+        password: "Manish@2021"
+      }
+    ];
+
+    const isValidLogin = validCredentials.some(
+      cred => cred.email === email && cred.password === password
+    );
+    
+    if (isValidLogin) {
       localStorage.setItem("isAdmin", "true");
       toast({
         title: "Login successful",
