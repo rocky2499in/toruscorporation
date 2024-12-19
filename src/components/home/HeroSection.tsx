@@ -4,8 +4,6 @@ import {
   Carousel,
   CarouselContent,
   CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
 } from "@/components/ui/carousel";
 import { useEffect, useState } from "react";
 
@@ -108,8 +106,6 @@ const HeroSection = () => {
               </CarouselItem>
             ))}
           </CarouselContent>
-          <CarouselPrevious className="hidden md:flex -left-4 text-white border-white hover:bg-white/20" />
-          <CarouselNext className="hidden md:flex -right-4 text-white border-white hover:bg-white/20" />
         </Carousel>
       </div>
     </div>
