@@ -1,43 +1,25 @@
-import { Button } from "@/components/ui/button";
+import { InlineWidget } from "react-calendly";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Calendar } from "@/components/ui/calendar";
-import { useState } from "react";
-import { toast } from "sonner";
 
 const Schedule = () => {
-  const [date, setDate] = useState<Date | undefined>(undefined);
-
-  const handleSchedule = () => {
-    if (!date) {
-      toast.error("Please select a date first");
-      return;
-    }
-    
-    toast.success("Your call has been scheduled! We'll be in touch soon.");
-  };
-
   return (
     <div className="container mx-auto px-4 pt-24 pb-16">
-      <Card className="max-w-2xl mx-auto">
+      <Card className="max-w-4xl mx-auto">
         <CardHeader>
-          <CardTitle>Schedule a Call</CardTitle>
-          <CardDescription>
-            Select a date and time to schedule a consultation with our team
+          <CardTitle className="text-3xl font-bold">Schedule a Call</CardTitle>
+          <CardDescription className="text-lg">
+            Book a consultation with our team to discuss your requirements and explore how we can assist you.
           </CardDescription>
         </CardHeader>
-        <CardContent className="space-y-6">
-          <div className="flex justify-center">
-            <Calendar
-              mode="single"
-              selected={date}
-              onSelect={setDate}
-              className="rounded-md border"
+        <CardContent>
+          <div className="w-full h-[600px]">
+            <InlineWidget
+              url="https://calendly.com/d/demo"
+              styles={{
+                height: '100%',
+                width: '100%',
+              }}
             />
-          </div>
-          <div className="flex justify-end">
-            <Button onClick={handleSchedule}>
-              Schedule Call
-            </Button>
           </div>
         </CardContent>
       </Card>
