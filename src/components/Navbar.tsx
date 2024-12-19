@@ -19,8 +19,12 @@ const Navbar = () => {
     <nav className="bg-secondary py-4 fixed w-full top-0 z-50">
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center">
-          <Link to="/" className="text-white text-2xl font-bold">
-            TORUS
+          <Link to="/" className="flex items-center">
+            <img 
+              src="/torus-logo.png" 
+              alt="Torus Defence & Strategies" 
+              className="h-12 w-auto"
+            />
           </Link>
 
           {/* Desktop Menu */}
