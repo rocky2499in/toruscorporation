@@ -2,7 +2,6 @@ import HeroSection from "@/components/home/HeroSection";
 import ProductOverview from "@/components/home/ProductOverview";
 import WhyChooseSection from "@/components/home/WhyChooseSection";
 import ServicesSection from "@/components/home/ServicesSection";
-import DefenceRangeSection from "@/components/home/DefenceRangeSection";
 import CommitmentSection from "@/components/home/CommitmentSection";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
@@ -16,10 +15,6 @@ const Index = () => {
       
       <div className="animate-fade-up [animation-delay:200ms]">
         <ProductOverview />
-      </div>
-      
-      <div className="animate-fade-up [animation-delay:400ms]">
-        <DefenceRangeSection />
       </div>
       
       <div className="animate-fade-up [animation-delay:600ms]">
