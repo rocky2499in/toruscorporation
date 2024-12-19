@@ -3,6 +3,7 @@ import ProductOverview from "@/components/home/ProductOverview";
 import WhyChooseSection from "@/components/home/WhyChooseSection";
 import ServicesSection from "@/components/home/ServicesSection";
 import DefenceRangeSection from "@/components/home/DefenceRangeSection";
+import CommitmentSection from "@/components/home/CommitmentSection";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 
@@ -12,6 +13,7 @@ const Index = () => {
       <HeroSection />
       <ProductOverview />
       <DefenceRangeSection />
+      <CommitmentSection />
       <WhyChooseSection />
       <ServicesSection />
       
