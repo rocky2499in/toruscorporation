@@ -51,7 +51,7 @@ const DealsToolbar = ({
           <SelectValue placeholder="Filter by stage" />
         </SelectTrigger>
         <SelectContent>
-          <SelectItem value="">All Stages</SelectItem>
+          <SelectItem value="all">All Stages</SelectItem>
           <SelectItem value="initial">Initial Contact</SelectItem>
           <SelectItem value="qualified">Qualified</SelectItem>
           <SelectItem value="proposal">Proposal</SelectItem>
