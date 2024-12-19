@@ -26,6 +26,8 @@ import WorkWithUs from "./pages/WorkWithUs";
 import Schedule from "./pages/Schedule";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import Dashboard from "./pages/admin/Dashboard";
+import DealPipeline from "./pages/admin/DealPipeline";
+import Settings from "./pages/admin/Settings";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -68,6 +70,8 @@ const App = () => {
                   <Route path="/schedule" element={<Schedule />} />
                   <Route path="/privacy-policy" element={<PrivacyPolicy />} />
                   <Route path="/admin/dashboard" element={<Dashboard />} />
+                  <Route path="/admin/deals" element={<DealPipeline />} />
+                  <Route path="/admin/settings" element={<Settings />} />
                 </Routes>
               </main>
               <Footer />
