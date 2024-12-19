@@ -15,7 +15,7 @@ const SportsAmmunition = () => {
         design: "Breakthrough roundhead design"
       },
       shelfLife: "10+ years under proper storage conditions",
-      image: "https://images.unsplash.com/photo-1485833077593-4278bba3f11f"
+      image: "/lovable-uploads/4825ed20-3bf3-4bb8-9cd8-082d9101526f.png"
     },
     {
       model: "9mm Luger 135 gr. Subsonic FSJ",
@@ -30,7 +30,7 @@ const SportsAmmunition = () => {
         standard: "NATO standard"
       },
       shelfLife: "10+ years under proper storage conditions",
-      image: "https://images.unsplash.com/photo-1438565434616-3ef039228b15"
+      image: "/lovable-uploads/7b986667-e02d-47a4-9b9f-ec35959b335c.png"
     },
     {
       model: "9mm Luger 150 gr. Subsonic FSJ",
@@ -45,7 +45,7 @@ const SportsAmmunition = () => {
         standard: "NATO standard"
       },
       shelfLife: "10+ years under proper storage conditions",
-      image: "https://images.unsplash.com/photo-1466721591366-2d5fba72006d"
+      image: "/lovable-uploads/1b5c4653-5ec9-4e7b-8fc6-46a9333e0e09.png"
     },
     {
       model: "9mm Luger 153 gr. FlatPoint Subsonic",
@@ -60,7 +60,7 @@ const SportsAmmunition = () => {
         standard: "NATO standard"
       },
       shelfLife: "10+ years under proper storage conditions",
-      image: "https://images.unsplash.com/photo-1485833077593-4278bba3f11f"
+      image: "/lovable-uploads/17ff3dc9-4228-4381-baeb-0accc2a57a3b.png"
     },
     {
       model: "9mm Luger 124 gr. FMJ",
@@ -75,7 +75,7 @@ const SportsAmmunition = () => {
         recoil: "Soft and flat"
       },
       shelfLife: "10+ years under proper storage conditions",
-      image: "https://images.unsplash.com/photo-1438565434616-3ef039228b15"
+      image: "/lovable-uploads/d392e7cf-bd63-4e75-ac87-617cc79c6189.png"
     }
   ];
 
