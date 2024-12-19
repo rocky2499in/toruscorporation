@@ -7,6 +7,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import { useEffect, useState } from "react";
 
 const slides = [
   {
@@ -30,8 +31,28 @@ const slides = [
 ];
 
 const HeroSection = () => {
+  const [api, setApi] = useState<any>();
+  const [current, setCurrent] = useState(0);
+
+  useEffect(() => {
+    if (!api) return;
+
+    const interval = setInterval(() => {
+      api.scrollNext();
+    }, 4000); // Auto scroll every 4 seconds
+
+    api.on("select", () => {
+      setCurrent(api.selectedScrollSnap());
+    });
+
+    return () => {
+      clearInterval(interval);
+      api.destroy();
+    };
+  }, [api]);
+
   return (
-    <div className="pt-24 pb-16 bg-secondary relative overflow-hidden min-h-[80vh]">
+    <div className="pt-24 pb-16 bg-secondary relative overflow-hidden min-h-[90vh]"> {/* Increased from 80vh to 90vh */}
       {/* Bullet animation elements */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="bullet-trail absolute h-1 w-8 bg-primary rounded-full animate-bullet-1"></div>
@@ -40,12 +61,16 @@ const HeroSection = () => {
       </div>
       
       <div className="container mx-auto px-4 relative z-10 h-full">
-        <Carousel className="w-full max-w-5xl mx-auto h-full" opts={{ loop: true }}>
+        <Carousel 
+          className="w-full max-w-5xl mx-auto h-full" 
+          opts={{ loop: true }} 
+          setApi={setApi}
+        >
           <CarouselContent>
             {slides.map((slide, index) => (
               <CarouselItem key={index} className="h-full">
                 <div 
-                  className="text-center animate-fade-up p-6 min-h-[60vh] flex flex-col items-center justify-center relative"
+                  className="text-center animate-fade-up p-6 min-h-[70vh] flex flex-col items-center justify-center relative" // Increased from 60vh to 70vh
                   style={{
                     backgroundImage: `url(${slide.bgImage})`,
                     backgroundSize: 'cover',
