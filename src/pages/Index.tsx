@@ -29,8 +29,17 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <div className="pt-24 pb-16 bg-secondary">
-        <div className="container mx-auto px-4">
+      <div 
+        className="pt-24 pb-16 bg-secondary relative"
+        style={{
+          backgroundImage: "url('/lovable-uploads/820b9b98-d755-4f2e-b96d-3838171f37c9.png')",
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat'
+        }}
+      >
+        <div className="absolute inset-0 bg-black/50" /> {/* Overlay for better text readability */}
+        <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-3xl mx-auto text-center animate-fade-up">
             <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
               Pioneering Explosive Technology
