@@ -13,6 +13,12 @@ import LargeCaliberAmmunition from "./pages/LargeCaliberAmmunition";
 import RocketsAndBombs from "./pages/RocketsAndBombs";
 import MortarBombs from "./pages/MortarBombs";
 import ExplosivesAndPropellants from "./pages/ExplosivesAndPropellants";
+import Technologies from "./pages/Technologies";
+import TNTManufacturing from "./pages/technologies/TNTManufacturing";
+import NitrocelluloseProduction from "./pages/technologies/NitrocelluloseProduction";
+import SpecializedExplosives from "./pages/technologies/SpecializedExplosives";
+import RDXManufacturing from "./pages/technologies/RDXManufacturing";
+import PropellantPortfolio from "./pages/technologies/PropellantPortfolio";
 
 const queryClient = new QueryClient();
 
@@ -33,6 +39,12 @@ const App = () => (
           <Route path="/defence-products/rockets-bombs" element={<RocketsAndBombs />} />
           <Route path="/defence-products/mortar-bombs" element={<MortarBombs />} />
           <Route path="/defence-products/explosives" element={<ExplosivesAndPropellants />} />
+          <Route path="/technologies" element={<Technologies />} />
+          <Route path="/technologies/tnt" element={<TNTManufacturing />} />
+          <Route path="/technologies/nitrocellulose" element={<NitrocelluloseProduction />} />
+          <Route path="/technologies/specialized" element={<SpecializedExplosives />} />
+          <Route path="/technologies/rdx" element={<RDXManufacturing />} />
+          <Route path="/technologies/propellants" element={<PropellantPortfolio />} />
         </Routes>
       </BrowserRouter>
     </TooltipProvider>
