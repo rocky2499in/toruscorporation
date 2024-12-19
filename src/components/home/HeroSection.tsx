@@ -12,23 +12,26 @@ const slides = [
   {
     title: "Pioneering Explosive Products",
     description: "Discover our comprehensive range of commercial and defence explosives, engineered for excellence and reliability.",
-    link: "/products"
+    link: "/products",
+    bgImage: "/lovable-uploads/86238e68-c584-4431-a072-a04cc31a173b.png"
   },
   {
     title: "Advanced Components",
     description: "Explore our specialized components designed for maximum performance and safety in explosive applications.",
-    link: "/components"
+    link: "/components",
+    bgImage: "/lovable-uploads/7cd4246f-abf2-4cf2-b8e7-7aeceaa5e617.png"
   },
   {
     title: "Technology Transfer",
     description: "Partner with us to access cutting-edge explosive technology and manufacturing expertise.",
-    link: "/technology-transfer"
+    link: "/technology-transfer",
+    bgImage: "/lovable-uploads/41f3d708-71e9-496d-8e21-b4c35032dbc6.png"
   }
 ];
 
 const HeroSection = () => {
   return (
-    <div className="pt-24 pb-16 bg-secondary relative overflow-hidden">
+    <div className="pt-24 pb-16 bg-secondary relative overflow-hidden min-h-[80vh]">
       {/* Bullet animation elements */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="bullet-trail absolute h-1 w-8 bg-primary rounded-full animate-bullet-1"></div>
@@ -36,35 +39,45 @@ const HeroSection = () => {
         <div className="bullet-trail absolute h-1 w-8 bg-primary rounded-full animate-bullet-3"></div>
       </div>
       
-      {/* Dark overlay */}
-      <div className="absolute inset-0 bg-black/75" />
-      
-      <div className="container mx-auto px-4 relative z-10">
-        <Carousel className="w-full max-w-5xl mx-auto" opts={{ loop: true }}>
+      <div className="container mx-auto px-4 relative z-10 h-full">
+        <Carousel className="w-full max-w-5xl mx-auto h-full" opts={{ loop: true }}>
           <CarouselContent>
             {slides.map((slide, index) => (
-              <CarouselItem key={index}>
-                <div className="text-center animate-fade-up p-6">
-                  <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
-                    {slide.title}
-                  </h1>
-                  <p className="text-lg text-gray-300 mb-8">
-                    {slide.description}
-                  </p>
-                  <div className="flex flex-wrap justify-center gap-4">
-                    <Button
-                      asChild
-                      className="bg-primary hover:bg-primary/90 text-white"
-                    >
-                      <Link to={slide.link}>Explore Products</Link>
-                    </Button>
-                    <Button
-                      asChild
-                      variant="outline"
-                      className="bg-transparent text-white hover:bg-white/10"
-                    >
-                      <Link to="/contact">Schedule a Call</Link>
-                    </Button>
+              <CarouselItem key={index} className="h-full">
+                <div 
+                  className="text-center animate-fade-up p-6 min-h-[60vh] flex flex-col items-center justify-center relative"
+                  style={{
+                    backgroundImage: `url(${slide.bgImage})`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                    backgroundRepeat: 'no-repeat'
+                  }}
+                >
+                  {/* Dark overlay for better text readability */}
+                  <div className="absolute inset-0 bg-black/60" />
+                  
+                  <div className="relative z-10">
+                    <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
+                      {slide.title}
+                    </h1>
+                    <p className="text-lg text-gray-300 mb-8 max-w-2xl mx-auto">
+                      {slide.description}
+                    </p>
+                    <div className="flex flex-wrap justify-center gap-4">
+                      <Button
+                        asChild
+                        className="bg-primary hover:bg-primary/90 text-white"
+                      >
+                        <Link to={slide.link}>Explore Products</Link>
+                      </Button>
+                      <Button
+                        asChild
+                        variant="outline"
+                        className="bg-transparent text-white hover:bg-white/10"
+                      >
+                        <Link to="/contact">Schedule a Call</Link>
+                      </Button>
+                    </div>
                   </div>
                 </div>
               </CarouselItem>
