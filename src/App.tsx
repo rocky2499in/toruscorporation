@@ -20,6 +20,7 @@ import SpecializedExplosives from "./pages/technologies/SpecializedExplosives";
 import RDXManufacturing from "./pages/technologies/RDXManufacturing";
 import PropellantPortfolio from "./pages/technologies/PropellantPortfolio";
 import WorkWithUs from "./pages/WorkWithUs";
+import Schedule from "./pages/Schedule";
 
 const queryClient = new QueryClient();
 
@@ -47,6 +48,7 @@ const App = () => (
           <Route path="/technologies/rdx" element={<RDXManufacturing />} />
           <Route path="/technologies/propellants" element={<PropellantPortfolio />} />
           <Route path="/work-with-us" element={<WorkWithUs />} />
+          <Route path="/schedule" element={<Schedule />} />
         </Routes>
       </BrowserRouter>
     </TooltipProvider>
