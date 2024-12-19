@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -9,15 +10,23 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/components/ui/use-toast";
+import TeamManagement from "@/components/admin/TeamManagement";
+import NotificationTrigger from "@/components/admin/NotificationTrigger";
+import { Notification, TeamMember } from "@/types/admin";
 
 const Settings = () => {
   const { toast } = useToast();
+  const [notifications, setNotifications] = useState<Notification[]>([]);
 
   const handleSave = () => {
     toast({
       title: "Settings Saved",
       description: "Your settings have been successfully updated.",
     });
+  };
+
+  const handleNotificationSent = (notification: Notification) => {
+    setNotifications([notification, ...notifications]);
   };
 
   return (
@@ -50,20 +59,21 @@ const Settings = () => {
 
         <Card>
           <CardHeader>
-            <CardTitle>Deal Pipeline Settings</CardTitle>
-            <CardDescription>
-              Configure your deal pipeline preferences
-            </CardDescription>
+            <div className="flex justify-between items-center">
+              <div>
+                <CardTitle>Team Management</CardTitle>
+                <CardDescription>
+                  Manage team members and their permissions
+                </CardDescription>
+              </div>
+              <NotificationTrigger 
+                members={[]} // This should be populated with actual team members
+                onNotificationSent={handleNotificationSent}
+              />
+            </div>
           </CardHeader>
-          <CardContent className="space-y-4">
-            <div className="space-y-2">
-              <Label htmlFor="currency">Default Currency</Label>
-              <Input id="currency" placeholder="USD" />
-            </div>
-            <div className="space-y-2">
-              <Label htmlFor="followup">Follow-up Reminder (days)</Label>
-              <Input id="followup" type="number" placeholder="7" />
-            </div>
+          <CardContent>
+            <TeamManagement />
           </CardContent>
         </Card>
 
