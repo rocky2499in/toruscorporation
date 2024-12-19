@@ -3,6 +3,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { StrictMode } from "react";
 import Navbar from "./components/Navbar";
 import Index from "./pages/Index";
 import AboutUs from "./pages/AboutUs";
@@ -22,38 +23,47 @@ import PropellantPortfolio from "./pages/technologies/PropellantPortfolio";
 import WorkWithUs from "./pages/WorkWithUs";
 import Schedule from "./pages/Schedule";
 
-const App = () => {
-  const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: 5 * 60 * 1000,
+      retry: 1,
+    },
+  },
+});
 
+const App = () => {
   return (
-    <QueryClientProvider client={queryClient}>
-      <TooltipProvider>
-        <Toaster />
-        <Sonner />
-        <BrowserRouter>
-          <Navbar />
-          <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/about" element={<AboutUs />} />
-            <Route path="/defence-products" element={<DefenceProducts />} />
-            <Route path="/defence-products/small-caliber" element={<SmallCaliberAmmunition />} />
-            <Route path="/defence-products/medium-caliber" element={<MediumCaliberAmmunition />} />
-            <Route path="/defence-products/large-caliber" element={<LargeCaliberAmmunition />} />
-            <Route path="/defence-products/rockets-bombs" element={<RocketsAndBombs />} />
-            <Route path="/defence-products/mortar-bombs" element={<MortarBombs />} />
-            <Route path="/defence-products/explosives" element={<ExplosivesAndPropellants />} />
-            <Route path="/technologies" element={<Technologies />} />
-            <Route path="/technologies/tnt" element={<TNTManufacturing />} />
-            <Route path="/technologies/nitrocellulose" element={<NitrocelluloseProduction />} />
-            <Route path="/technologies/specialized" element={<SpecializedExplosives />} />
-            <Route path="/technologies/rdx" element={<RDXManufacturing />} />
-            <Route path="/technologies/propellants" element={<PropellantPortfolio />} />
-            <Route path="/work-with-us" element={<WorkWithUs />} />
-            <Route path="/schedule" element={<Schedule />} />
-          </Routes>
-        </BrowserRouter>
-      </TooltipProvider>
-    </QueryClientProvider>
+    <StrictMode>
+      <BrowserRouter>
+        <QueryClientProvider client={queryClient}>
+          <TooltipProvider>
+            <Toaster />
+            <Sonner />
+            <Navbar />
+            <Routes>
+              <Route path="/" element={<Index />} />
+              <Route path="/about" element={<AboutUs />} />
+              <Route path="/defence-products" element={<DefenceProducts />} />
+              <Route path="/defence-products/small-caliber" element={<SmallCaliberAmmunition />} />
+              <Route path="/defence-products/medium-caliber" element={<MediumCaliberAmmunition />} />
+              <Route path="/defence-products/large-caliber" element={<LargeCaliberAmmunition />} />
+              <Route path="/defence-products/rockets-bombs" element={<RocketsAndBombs />} />
+              <Route path="/defence-products/mortar-bombs" element={<MortarBombs />} />
+              <Route path="/defence-products/explosives" element={<ExplosivesAndPropellants />} />
+              <Route path="/technologies" element={<Technologies />} />
+              <Route path="/technologies/tnt" element={<TNTManufacturing />} />
+              <Route path="/technologies/nitrocellulose" element={<NitrocelluloseProduction />} />
+              <Route path="/technologies/specialized" element={<SpecializedExplosives />} />
+              <Route path="/technologies/rdx" element={<RDXManufacturing />} />
+              <Route path="/technologies/propellants" element={<PropellantPortfolio />} />
+              <Route path="/work-with-us" element={<WorkWithUs />} />
+              <Route path="/schedule" element={<Schedule />} />
+            </Routes>
+          </TooltipProvider>
+        </QueryClientProvider>
+      </BrowserRouter>
+    </StrictMode>
   );
 };
 
