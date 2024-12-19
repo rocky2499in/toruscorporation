@@ -1,9 +1,12 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
+import LoginDialog from "./auth/LoginDialog";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isLoginOpen, setIsLoginOpen] = useState(false);
+  const isAdmin = localStorage.getItem("isAdmin");
 
   const menuItems = [
     { title: "Home", path: "/" },
@@ -29,7 +32,7 @@ const Navbar = () => {
           </Link>
 
           {/* Desktop Menu */}
-          <div className="hidden md:flex space-x-6">
+          <div className="hidden md:flex space-x-6 items-center">
             {menuItems.map((item) => (
               <Link
                 key={item.path}
@@ -39,6 +42,21 @@ const Navbar = () => {
                 {item.title}
               </Link>
             ))}
+            {isAdmin ? (
+              <Link
+                to="/admin/dashboard"
+                className="text-white hover:text-primary transition-colors"
+              >
+                Dashboard
+              </Link>
+            ) : (
+              <button
+                onClick={() => setIsLoginOpen(true)}
+                className="text-white hover:text-primary transition-colors"
+              >
+                Login
+              </button>
+            )}
           </div>
 
           {/* Mobile Menu Button */}
@@ -64,10 +82,30 @@ const Navbar = () => {
                   {item.title}
                 </Link>
               ))}
+              {isAdmin ? (
+                <Link
+                  to="/admin/dashboard"
+                  className="text-white hover:text-primary transition-colors px-4"
+                  onClick={() => setIsOpen(false)}
+                >
+                  Dashboard
+                </Link>
+              ) : (
+                <button
+                  onClick={() => {
+                    setIsOpen(false);
+                    setIsLoginOpen(true);
+                  }}
+                  className="text-white hover:text-primary transition-colors px-4 text-left"
+                >
+                  Login
+                </button>
+              )}
             </div>
           </div>
         )}
       </div>
+      <LoginDialog isOpen={isLoginOpen} onClose={() => setIsLoginOpen(false)} />
     </nav>
   );
 };

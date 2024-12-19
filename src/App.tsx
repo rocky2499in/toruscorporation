@@ -25,6 +25,7 @@ import PropellantPortfolio from "./pages/technologies/PropellantPortfolio";
 import WorkWithUs from "./pages/WorkWithUs";
 import Schedule from "./pages/Schedule";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
+import Dashboard from "./pages/admin/Dashboard";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -66,6 +67,7 @@ const App = () => {
                   <Route path="/work-with-us" element={<WorkWithUs />} />
                   <Route path="/schedule" element={<Schedule />} />
                   <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+                  <Route path="/admin/dashboard" element={<Dashboard />} />
                 </Routes>
               </main>
               <Footer />
