@@ -1,21 +1,40 @@
 import { 
   Home,
   Info,
-  Shield,
-  Target,
+  Package,
   Rocket,
-  Briefcase,
+  Component,
+  Phone,
   Calendar,
-  Phone
+  Briefcase,
+  ShoppingCart
 } from "lucide-react";
 
 export const menuItems = [
   { title: "Home", path: "/", icon: Home },
   { title: "About Us", path: "/about", icon: Info },
-  { title: "Defence Products", path: "/defence-products", icon: Shield },
-  { title: "Sports Ammunition", path: "/sports-ammunition", icon: Target },
-  { title: "Technologies", path: "/technologies", icon: Rocket },
-  { title: "Work With Us", path: "/work-with-us", icon: Briefcase },
-  { title: "Schedule a Call", path: "/schedule", icon: Calendar },
-  { title: "Contact", path: "/contact", icon: Phone },
+  { title: "Products", path: "/products", icon: Package },
+  { 
+    title: "Technology Transfer", 
+    path: "/technology-transfer",
+    icon: Rocket,
+    submenu: [
+      { title: "TNT", path: "/technology-transfer/tnt" },
+      { title: "RDX", path: "/technology-transfer/rdx" },
+      { title: "Ammonium Perchlorate", path: "/technology-transfer/ammonium-perchlorate" },
+      { title: "Nitrocellulose", path: "/technology-transfer/nitrocellulose" },
+      { title: "Propellants", path: "/technology-transfer/propellants" }
+    ]
+  },
+  { title: "Components", path: "/components", icon: Component },
+  { 
+    title: "Contact", 
+    path: "/contact",
+    icon: Phone,
+    submenu: [
+      { title: "Procurement Assistance", path: "/contact/procurement" },
+      { title: "Work With Us", path: "/contact/work-with-us" },
+      { title: "Schedule a Call", path: "/contact/schedule" }
+    ]
+  }
 ];
