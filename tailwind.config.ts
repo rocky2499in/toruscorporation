@@ -76,9 +76,25 @@ export default {
             transform: "translateY(0)",
           },
         },
+        "bullet-trail": {
+          "0%": {
+            transform: "translateX(-100%) translateY(100vh) rotate(45deg)",
+            opacity: "0",
+          },
+          "20%": {
+            opacity: "1",
+          },
+          "100%": {
+            transform: "translateX(200%) translateY(-100vh) rotate(45deg)",
+            opacity: "0",
+          },
+        },
       },
       animation: {
         "fade-up": "fade-up 0.5s ease-out",
+        "bullet-1": "bullet-trail 3s linear infinite",
+        "bullet-2": "bullet-trail 3s linear infinite 1s",
+        "bullet-3": "bullet-trail 3s linear infinite 2s",
       },
     },
   },
