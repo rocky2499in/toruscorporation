@@ -122,7 +122,7 @@ const Schedule = () => {
       ) : (
         <div className="max-w-4xl mx-auto">
           <InlineWidget
-            url="https://calendly.com/your-calendly-url"
+            url="https://calendly.com/connect-kinematic/30min"
             styles={{
               height: '700px'
             }}
