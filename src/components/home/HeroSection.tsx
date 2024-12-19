@@ -13,19 +13,19 @@ const slides = [
     title: "Pioneering Explosive Products",
     description: "Discover our comprehensive range of commercial and defence explosives, engineered for excellence and reliability.",
     link: "/products",
-    bgImage: "/lovable-uploads/86238e68-c584-4431-a072-a04cc31a173b.png"
+    bgImage: "/lovable-uploads/9546de80-6067-4f12-bd9c-2683312f8d98.png"
   },
   {
     title: "Advanced Components",
     description: "Explore our specialized components designed for maximum performance and safety in explosive applications.",
     link: "/components",
-    bgImage: "/lovable-uploads/7cd4246f-abf2-4cf2-b8e7-7aeceaa5e617.png"
+    bgImage: "/lovable-uploads/820b9b98-d755-4f2e-b96d-3838171f37c9.png"
   },
   {
     title: "Technology Transfer",
     description: "Partner with us to access cutting-edge explosive technology and manufacturing expertise.",
     link: "/technology-transfer",
-    bgImage: "/lovable-uploads/41f3d708-71e9-496d-8e21-b4c35032dbc6.png"
+    bgImage: "/lovable-uploads/cf29c540-fce4-4192-82ca-d7dfbdc58d69.png"
   }
 ];
 
