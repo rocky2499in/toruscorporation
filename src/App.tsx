@@ -8,6 +8,7 @@ import Navbar from "./components/Navbar";
 import Index from "./pages/Index";
 import AboutUs from "./pages/AboutUs";
 import DefenceProducts from "./pages/DefenceProducts";
+import SportsAmmunition from "./pages/SportsAmmunition";
 import SmallCaliberAmmunition from "./pages/SmallCaliberAmmunition";
 import MediumCaliberAmmunition from "./pages/MediumCaliberAmmunition";
 import LargeCaliberAmmunition from "./pages/LargeCaliberAmmunition";
@@ -45,6 +46,7 @@ const App = () => {
               <Route path="/" element={<Index />} />
               <Route path="/about" element={<AboutUs />} />
               <Route path="/defence-products" element={<DefenceProducts />} />
+              <Route path="/sports-ammunition" element={<SportsAmmunition />} />
               <Route path="/defence-products/small-caliber" element={<SmallCaliberAmmunition />} />
               <Route path="/defence-products/medium-caliber" element={<MediumCaliberAmmunition />} />
               <Route path="/defence-products/large-caliber" element={<LargeCaliberAmmunition />} />

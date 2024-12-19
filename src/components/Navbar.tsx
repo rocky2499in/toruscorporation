@@ -9,6 +9,7 @@ const Navbar = () => {
     { title: "Home", path: "/" },
     { title: "About Us", path: "/about" },
     { title: "Defence Products", path: "/defence-products" },
+    { title: "Sports Ammunition", path: "/sports-ammunition" },
     { title: "Technologies", path: "/technologies" },
     { title: "Work With Us", path: "/work-with-us" },
     { title: "Schedule a Call", path: "/schedule" },
