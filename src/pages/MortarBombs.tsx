@@ -8,6 +8,7 @@ import {
 } from "@/components/ui/table";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { AspectRatio } from "@/components/ui/aspect-ratio";
 
 const MortarBombs = () => {
   const products = [
@@ -15,46 +16,55 @@ const MortarBombs = () => {
       product: "51mm HE (High Explosive)",
       caliber: "51mm",
       description: "Light mortar munition",
+      image: "/placeholder.svg"
     },
     {
       product: "51mm Smoke",
       caliber: "51mm",
       description: "Smoke-producing mortar round",
+      image: "/placeholder.svg"
     },
     {
       product: "51mm Illuminating",
       caliber: "51mm",
       description: "Illumination round",
+      image: "/placeholder.svg"
     },
     {
       product: "81mm HE",
       caliber: "81mm",
       description: "Standard mortar munition",
+      image: "/placeholder.svg"
     },
     {
       product: "81mm Smoke",
       caliber: "81mm",
       description: "Smoke-producing round",
+      image: "/placeholder.svg"
     },
     {
       product: "81mm Illuminating",
       caliber: "81mm",
       description: "Illumination round",
+      image: "/placeholder.svg"
     },
     {
       product: "120mm HE",
       caliber: "120mm",
       description: "Heavy mortar round",
+      image: "/placeholder.svg"
     },
     {
       product: "120mm Smoke",
       caliber: "120mm",
       description: "Smoke-producing heavy mortar round",
+      image: "/placeholder.svg"
     },
     {
       product: "120mm Illuminating",
       caliber: "120mm",
       description: "Illumination round",
+      image: "/placeholder.svg"
     },
   ];
 
@@ -62,6 +72,7 @@ const MortarBombs = () => {
     {
       caliber: "51mm",
       model: "High Explosive",
+      image: "/placeholder.svg",
       specs: {
         weight: "0.9kg",
         length: "230mm",
@@ -75,6 +86,7 @@ const MortarBombs = () => {
     {
       caliber: "81mm",
       model: "Standard HE",
+      image: "/placeholder.svg",
       specs: {
         weight: "4.1kg",
         length: "400mm",
@@ -88,6 +100,7 @@ const MortarBombs = () => {
     {
       caliber: "120mm",
       model: "Heavy HE",
+      image: "/placeholder.svg",
       specs: {
         weight: "13kg",
         length: "640mm",
@@ -112,31 +125,42 @@ const MortarBombs = () => {
           </TabsList>
 
           <TabsContent value="overview">
-            <Card>
-              <CardHeader>
-                <CardTitle>Product Overview</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <Table>
-                  <TableHeader>
-                    <TableRow>
-                      <TableHead>Product</TableHead>
-                      <TableHead>Caliber</TableHead>
-                      <TableHead>Description</TableHead>
-                    </TableRow>
-                  </TableHeader>
-                  <TableBody>
-                    {products.map((product) => (
-                      <TableRow key={product.product}>
-                        <TableCell className="font-medium">{product.product}</TableCell>
-                        <TableCell>{product.caliber}</TableCell>
-                        <TableCell>{product.description}</TableCell>
-                      </TableRow>
-                    ))}
-                  </TableBody>
-                </Table>
-              </CardContent>
-            </Card>
+            <div className="grid gap-6">
+              {products.map((product, index) => (
+                <Card key={index}>
+                  <CardHeader>
+                    <CardTitle>{product.product}</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="grid md:grid-cols-3 gap-4 items-center">
+                      <div className="md:col-span-1">
+                        <AspectRatio ratio={4/3} className="bg-muted">
+                          <img
+                            src={product.image}
+                            alt={product.product}
+                            className="object-cover w-full h-full rounded-md"
+                          />
+                        </AspectRatio>
+                      </div>
+                      <div className="md:col-span-2">
+                        <Table>
+                          <TableBody>
+                            <TableRow>
+                              <TableCell className="font-medium">Caliber</TableCell>
+                              <TableCell>{product.caliber}</TableCell>
+                            </TableRow>
+                            <TableRow>
+                              <TableCell className="font-medium">Description</TableCell>
+                              <TableCell>{product.description}</TableCell>
+                            </TableRow>
+                          </TableBody>
+                        </Table>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
           </TabsContent>
 
           <TabsContent value="specifications">
@@ -147,23 +171,36 @@ const MortarBombs = () => {
                     <CardTitle>{spec.caliber} - {spec.model}</CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <div className="grid md:grid-cols-2 gap-4">
-                      <div>
-                        <h4 className="font-semibold mb-2">Specifications:</h4>
-                        <ul className="list-disc pl-5 space-y-1">
-                          {Object.entries(spec.specs).map(([key, value]) => (
-                            <li key={key}>
-                              {key.replace(/([A-Z])/g, ' $1').trim()}: {value}
-                            </li>
-                          ))}
-                        </ul>
+                    <div className="grid md:grid-cols-3 gap-6">
+                      <div className="md:col-span-1">
+                        <AspectRatio ratio={4/3} className="bg-muted">
+                          <img
+                            src={spec.image}
+                            alt={`${spec.caliber} ${spec.model}`}
+                            className="object-cover w-full h-full rounded-md"
+                          />
+                        </AspectRatio>
                       </div>
-                      <div>
-                        <h4 className="font-semibold mb-2">Description:</h4>
-                        <p className="text-gray-600">{spec.description}</p>
-                        <p className="mt-4">
-                          <span className="font-semibold">Shelf Life:</span> {spec.shelfLife}
-                        </p>
+                      <div className="md:col-span-2">
+                        <div className="grid md:grid-cols-2 gap-4">
+                          <div>
+                            <h4 className="font-semibold mb-2">Specifications:</h4>
+                            <ul className="list-disc pl-5 space-y-1">
+                              {Object.entries(spec.specs).map(([key, value]) => (
+                                <li key={key}>
+                                  {key.replace(/([A-Z])/g, ' $1').trim()}: {value}
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                          <div>
+                            <h4 className="font-semibold mb-2">Description:</h4>
+                            <p className="text-gray-600">{spec.description}</p>
+                            <p className="mt-4">
+                              <span className="font-semibold">Shelf Life:</span> {spec.shelfLife}
+                            </p>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </CardContent>
