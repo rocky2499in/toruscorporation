@@ -25,43 +25,41 @@ const commitments = [
 
 const CommitmentSection = () => {
   return (
-    <div className="py-16 bg-gray-50">
-      <div className="container mx-auto px-4">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <div className="relative">
-            <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-transparent rounded-lg" />
-            <img
-              src="/lovable-uploads/9546de80-6067-4f12-bd9c-2683312f8d98.png"
-              alt="Commitment to Excellence"
-              className="w-full h-[600px] object-cover rounded-lg shadow-xl"
-            />
+    <div className="py-16 relative">
+      <div className="absolute inset-0">
+        <img
+          src="/lovable-uploads/9546de80-6067-4f12-bd9c-2683312f8d98.png"
+          alt="Commitment to Excellence"
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-black/60" />
+      </div>
+
+      <div className="container mx-auto px-4 relative z-10">
+        <div className="max-w-3xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold text-white mb-4">
+              OUR COMMITMENT TO EXCELLENCE
+            </h2>
+            <div className="w-20 h-1 bg-primary mx-auto" />
           </div>
 
-          <div className="space-y-8">
-            <div>
-              <h2 className="text-4xl font-bold text-secondary mb-4">
-                OUR COMMITMENT TO EXCELLENCE
-              </h2>
-              <div className="w-20 h-1 bg-primary mb-8" />
-            </div>
-
-            <div className="grid gap-8">
-              {commitments.map((commitment, index) => (
-                <div key={index} className="flex items-start gap-4 group">
-                  <div className="p-3 rounded-lg bg-white shadow-md group-hover:bg-primary transition-colors">
-                    <commitment.icon className="w-6 h-6 text-primary group-hover:text-white" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-semibold mb-2 text-secondary">
-                      {commitment.title}
-                    </h3>
-                    <p className="text-gray-600">
-                      {commitment.description}
-                    </p>
-                  </div>
+          <div className="grid md:grid-cols-2 gap-8">
+            {commitments.map((commitment, index) => (
+              <div key={index} className="flex items-start gap-4 group">
+                <div className="p-3 rounded-lg bg-white/10 backdrop-blur-sm shadow-md group-hover:bg-primary transition-colors">
+                  <commitment.icon className="w-6 h-6 text-primary group-hover:text-white" />
                 </div>
-              ))}
-            </div>
+                <div>
+                  <h3 className="text-xl font-semibold mb-2 text-white">
+                    {commitment.title}
+                  </h3>
+                  <p className="text-gray-200">
+                    {commitment.description}
+                  </p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>
