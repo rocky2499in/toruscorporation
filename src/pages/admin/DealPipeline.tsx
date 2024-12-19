@@ -12,6 +12,17 @@ const DealPipeline = () => {
   const [sortBy, setSortBy] = useState<keyof Deal>("value");
   const [sortOrder, setSortOrder] = useState<"asc" | "desc">("desc");
 
+  const handleAddDeal = (dealData: Omit<Deal, "id" | "profit">) => {
+    addDeal({
+      ...dealData,
+      currency: dealData.currency,
+      margin: dealData.margin,
+      marginType: dealData.marginType,
+      endUserCountry: dealData.endUserCountry,
+    });
+    setIsNewDealOpen(false);
+  };
+
   const handleImportDeals = (importedDeals: Partial<Deal>[]) => {
     importedDeals.forEach((deal) => {
       if (deal.companyName && deal.contactPerson && deal.email) {
@@ -20,12 +31,16 @@ const DealPipeline = () => {
           contactPerson: deal.contactPerson,
           email: deal.email,
           value: deal.value || 0,
-          stage: (deal.stage as string) || "initial",
+          currency: deal.currency || "USD",
+          margin: deal.margin || 0,
+          marginType: deal.marginType || "percentage",
+          stage: deal.stage || "Contact made",
           probability: deal.probability || 0,
           notes: deal.notes || "",
           nextAction: deal.nextAction || "",
           nextActionDate: deal.nextActionDate || new Date().toISOString().split("T")[0],
           lastContact: new Date().toISOString().split("T")[0],
+          endUserCountry: deal.endUserCountry || "",
         });
       }
     });
@@ -64,10 +79,7 @@ const DealPipeline = () => {
       <NewDealDialog
         isOpen={isNewDealOpen}
         onClose={() => setIsNewDealOpen(false)}
-        onSubmit={(deal) => {
-          addDeal(deal);
-          setIsNewDealOpen(false);
-        }}
+        onSubmit={handleAddDeal}
       />
     </div>
   );

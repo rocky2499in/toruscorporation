@@ -20,30 +20,28 @@ export interface Deal {
   endUserCountry: string;
 }
 
-const initialDeals = [{
-  id: "sc-001",
-  companyName: "European Defense Systems Ltd",
-  contactPerson: "Marcus Weber",
-  email: "m.weber@eds-ltd.eu",
-  value: 130000,
-  currency: "EUR",
-  margin: 25,
-  marginType: "percentage",
-  profit: 32500,
-  stage: "Hot",
-  lastContact: "2024-03-15",
-  probability: 75,
-  notes: "Interested in 5.56mm NATO standard ammunition. Initial technical specifications reviewed and approved. Awaiting final budget approval from client's procurement department.",
-  nextAction: "Follow up on procurement approval status",
-  nextActionDate: "2024-03-22",
-  endUserCountry: "Germany"
-}];
-
 export const useDealManagement = () => {
   const { toast } = useToast();
   const [deals, setDeals] = useState<Deal[]>(() => {
     const savedDeals = localStorage.getItem("deals");
-    return savedDeals ? JSON.parse(savedDeals) : initialDeals;
+    return savedDeals ? JSON.parse(savedDeals) : [{
+      id: "sc-001",
+      companyName: "European Defense Systems Ltd",
+      contactPerson: "Marcus Weber",
+      email: "m.weber@eds-ltd.eu",
+      value: 130000,
+      currency: "EUR",
+      margin: 25,
+      marginType: "percentage",
+      profit: 32500,
+      stage: "Hot",
+      lastContact: "2024-03-15",
+      probability: 75,
+      notes: "Interested in 5.56mm NATO standard ammunition. Initial technical specifications reviewed and approved. Awaiting final budget approval from client's procurement department.",
+      nextAction: "Follow up on procurement approval status",
+      nextActionDate: "2024-03-22",
+      endUserCountry: "Germany"
+    }];
   });
 
   const calculateProfit = (value: number, margin: number, marginType: "percentage" | "absolute") => {
