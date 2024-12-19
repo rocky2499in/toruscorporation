@@ -10,11 +10,11 @@ export const ProductCard = ({ product }: { product: BaseProduct }) => {
       </CardHeader>
       <CardContent>
         <div className="space-y-4">
-          <AspectRatio ratio={4/3} className="bg-muted overflow-hidden rounded-lg">
+          <AspectRatio ratio={1} className="bg-muted overflow-hidden rounded-lg">
             <img
               src={product.image || "https://images.unsplash.com/photo-1485833077593-4278bba3f11f"}
               alt={product.product}
-              className="object-cover w-full h-full"
+              className="object-cover w-full h-full hover:scale-105 transition-transform duration-300"
             />
           </AspectRatio>
           <div className="space-y-2">

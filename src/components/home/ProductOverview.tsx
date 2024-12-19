@@ -1,5 +1,6 @@
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { ProductCard } from "@/components/ProductCard";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 const featuredProducts = [
   {
@@ -23,6 +24,8 @@ const featuredProducts = [
 ];
 
 const ProductOverview = () => {
+  const isMobile = useIsMobile();
+
   return (
     <div className="py-16 bg-white">
       <div className="container mx-auto px-4">
@@ -31,18 +34,21 @@ const ProductOverview = () => {
           Discover our premium range of sports ammunition, engineered for competitive shooting and professional applications.
         </p>
 
-        <Carousel className="w-full max-w-5xl mx-auto">
-          <CarouselContent>
+        <Carousel className="w-full max-w-7xl mx-auto">
+          <CarouselContent className="-ml-2 md:-ml-4">
             {featuredProducts.map((product, index) => (
-              <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
-                <div className="p-2">
-                  <ProductCard product={product} />
-                </div>
+              <CarouselItem 
+                key={index} 
+                className={isMobile ? "pl-2 basis-full" : "pl-4 basis-1/3"}
+              >
+                <ProductCard product={product} />
               </CarouselItem>
             ))}
           </CarouselContent>
-          <CarouselPrevious />
-          <CarouselNext />
+          <div className="hidden md:block">
+            <CarouselPrevious className="-left-12" />
+            <CarouselNext className="-right-12" />
+          </div>
         </Carousel>
       </div>
     </div>
