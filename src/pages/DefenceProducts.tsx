@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Card, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
-import { Shield, Target, Rocket, Bomb, Crosshair, Flask } from "lucide-react";
+import { Shield, Target, Rocket, Bomb, Crosshair, Beaker } from "lucide-react";
 
 const DefenceProducts = () => {
   const categories = [
@@ -37,7 +37,7 @@ const DefenceProducts = () => {
     {
       title: "Explosives and Propellants",
       description: "Specialized explosive compounds and propellant materials",
-      icon: Flask,
+      icon: Beaker,
       path: "/defence-products/explosives",
     },
   ];
