@@ -8,21 +8,23 @@ import {
 } from "@/components/ui/table";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { AspectRatio } from "@/components/ui/aspect-ratio";
+import { ProductCard } from "@/components/ProductCard";
+import { SpecificationCard } from "@/components/SpecificationCard";
+import { BaseProduct, Specification } from "@/types/products";
 
 const MortarBombs = () => {
-  const products = [
+  const products: BaseProduct[] = [
     {
       product: "51mm HE (High Explosive)",
       caliber: "51mm",
       description: "Light mortar munition",
-      image: "/placeholder.svg"
+      image: "https://images.unsplash.com/photo-1485833077593-4278bba3f11f"
     },
     {
       product: "51mm Smoke",
       caliber: "51mm",
       description: "Smoke-producing mortar round",
-      image: "/placeholder.svg"
+      image: "https://images.unsplash.com/photo-1438565434616-3ef039228b15"
     },
     {
       product: "51mm Illuminating",
@@ -68,11 +70,11 @@ const MortarBombs = () => {
     },
   ];
 
-  const specifications = [
+  const specifications: Specification[] = [
     {
       caliber: "51mm",
       model: "High Explosive",
-      image: "/placeholder.svg",
+      image: "https://images.unsplash.com/photo-1501286353178-1ec881214838",
       specs: {
         weight: "0.9kg",
         length: "230mm",
@@ -125,40 +127,9 @@ const MortarBombs = () => {
           </TabsList>
 
           <TabsContent value="overview">
-            <div className="grid gap-6">
-              {products.map((product, index) => (
-                <Card key={index}>
-                  <CardHeader>
-                    <CardTitle>{product.product}</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="grid md:grid-cols-3 gap-4 items-center">
-                      <div className="md:col-span-1">
-                        <AspectRatio ratio={4/3} className="bg-muted">
-                          <img
-                            src={product.image}
-                            alt={product.product}
-                            className="object-cover w-full h-full rounded-md"
-                          />
-                        </AspectRatio>
-                      </div>
-                      <div className="md:col-span-2">
-                        <Table>
-                          <TableBody>
-                            <TableRow>
-                              <TableCell className="font-medium">Caliber</TableCell>
-                              <TableCell>{product.caliber}</TableCell>
-                            </TableRow>
-                            <TableRow>
-                              <TableCell className="font-medium">Description</TableCell>
-                              <TableCell>{product.description}</TableCell>
-                            </TableRow>
-                          </TableBody>
-                        </Table>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {products.map((product) => (
+                <ProductCard key={product.product} product={product} />
               ))}
             </div>
           </TabsContent>
@@ -166,45 +137,7 @@ const MortarBombs = () => {
           <TabsContent value="specifications">
             <div className="grid gap-6">
               {specifications.map((spec) => (
-                <Card key={spec.model}>
-                  <CardHeader>
-                    <CardTitle>{spec.caliber} - {spec.model}</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="grid md:grid-cols-3 gap-6">
-                      <div className="md:col-span-1">
-                        <AspectRatio ratio={4/3} className="bg-muted">
-                          <img
-                            src={spec.image}
-                            alt={`${spec.caliber} ${spec.model}`}
-                            className="object-cover w-full h-full rounded-md"
-                          />
-                        </AspectRatio>
-                      </div>
-                      <div className="md:col-span-2">
-                        <div className="grid md:grid-cols-2 gap-4">
-                          <div>
-                            <h4 className="font-semibold mb-2">Specifications:</h4>
-                            <ul className="list-disc pl-5 space-y-1">
-                              {Object.entries(spec.specs).map(([key, value]) => (
-                                <li key={key}>
-                                  {key.replace(/([A-Z])/g, ' $1').trim()}: {value}
-                                </li>
-                              ))}
-                            </ul>
-                          </div>
-                          <div>
-                            <h4 className="font-semibold mb-2">Description:</h4>
-                            <p className="text-gray-600">{spec.description}</p>
-                            <p className="mt-4">
-                              <span className="font-semibold">Shelf Life:</span> {spec.shelfLife}
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
+                <SpecificationCard key={spec.model} spec={spec} />
               ))}
             </div>
           </TabsContent>

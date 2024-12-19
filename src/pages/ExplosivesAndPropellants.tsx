@@ -1,20 +1,15 @@
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { ProductCard } from "@/components/ProductCard";
+import { SpecificationCard } from "@/components/SpecificationCard";
+import { BaseProduct, Specification } from "@/types/products";
 
 const ExplosivesAndPropellants = () => {
-  const products = [
+  const products: BaseProduct[] = [
     {
       product: "DNT",
       type: "Chemical explosive",
       description: "Dinitrotoluene explosive compound",
+      image: "https://images.unsplash.com/photo-1469041797191-50ace28483c3"
     },
     {
       product: "TNT",
@@ -53,9 +48,10 @@ const ExplosivesAndPropellants = () => {
     },
   ];
 
-  const specifications = [
+  const specifications: Specification[] = [
     {
       type: "TNT",
+      image: "https://images.unsplash.com/photo-1452378174528-3090a4bba7b2",
       specs: {
         density: "1.654 g/cm³",
         detonationVelocity: "6900 m/s",
@@ -104,62 +100,17 @@ const ExplosivesAndPropellants = () => {
           </TabsList>
 
           <TabsContent value="overview">
-            <Card>
-              <CardHeader>
-                <CardTitle>Product Overview</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <Table>
-                  <TableHeader>
-                    <TableRow>
-                      <TableHead>Product</TableHead>
-                      <TableHead>Type</TableHead>
-                      <TableHead>Description</TableHead>
-                    </TableRow>
-                  </TableHeader>
-                  <TableBody>
-                    {products.map((product) => (
-                      <TableRow key={product.product}>
-                        <TableCell className="font-medium">{product.product}</TableCell>
-                        <TableCell>{product.type}</TableCell>
-                        <TableCell>{product.description}</TableCell>
-                      </TableRow>
-                    ))}
-                  </TableBody>
-                </Table>
-              </CardContent>
-            </Card>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {products.map((product) => (
+                <ProductCard key={product.product} product={product} />
+              ))}
+            </div>
           </TabsContent>
 
           <TabsContent value="specifications">
             <div className="grid gap-6">
               {specifications.map((spec) => (
-                <Card key={spec.type}>
-                  <CardHeader>
-                    <CardTitle>{spec.type}</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="grid md:grid-cols-2 gap-4">
-                      <div>
-                        <h4 className="font-semibold mb-2">Specifications:</h4>
-                        <ul className="list-disc pl-5 space-y-1">
-                          {Object.entries(spec.specs).map(([key, value]) => (
-                            <li key={key}>
-                              {key.replace(/([A-Z])/g, ' $1').trim()}: {value}
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                      <div>
-                        <h4 className="font-semibold mb-2">Description:</h4>
-                        <p className="text-gray-600">{spec.description}</p>
-                        <p className="mt-4">
-                          <span className="font-semibold">Shelf Life:</span> {spec.shelfLife}
-                        </p>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
+                <SpecificationCard key={spec.type} spec={spec} />
               ))}
             </div>
           </TabsContent>
