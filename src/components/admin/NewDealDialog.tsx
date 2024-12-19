@@ -16,6 +16,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Label } from "@/components/ui/label";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 
 interface NewDealDialogProps {
   isOpen: boolean;
@@ -29,11 +30,15 @@ const NewDealDialog = ({ isOpen, onClose, onSubmit }: NewDealDialogProps) => {
     contactPerson: "",
     email: "",
     value: "",
-    stage: "initial",
+    currency: "USD",
+    margin: "",
+    marginType: "percentage",
+    stage: "Contact made",
     probability: "",
     notes: "",
     nextAction: "",
     nextActionDate: "",
+    endUserCountry: "",
   });
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -41,6 +46,7 @@ const NewDealDialog = ({ isOpen, onClose, onSubmit }: NewDealDialogProps) => {
     onSubmit({
       ...formData,
       value: Number(formData.value),
+      margin: Number(formData.margin),
       probability: Number(formData.probability),
       lastContact: new Date().toISOString().split("T")[0],
     });
@@ -49,11 +55,15 @@ const NewDealDialog = ({ isOpen, onClose, onSubmit }: NewDealDialogProps) => {
       contactPerson: "",
       email: "",
       value: "",
-      stage: "initial",
+      currency: "USD",
+      margin: "",
+      marginType: "percentage",
+      stage: "Contact made",
       probability: "",
       notes: "",
       nextAction: "",
       nextActionDate: "",
+      endUserCountry: "",
     });
   };
 
@@ -66,86 +76,148 @@ const NewDealDialog = ({ isOpen, onClose, onSubmit }: NewDealDialogProps) => {
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="sm:max-w-[425px]">
+      <DialogContent className="sm:max-w-[600px] max-h-[90vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle>Add New Deal</DialogTitle>
         </DialogHeader>
         <form onSubmit={handleSubmit} className="space-y-4">
-          <div className="space-y-2">
-            <Label htmlFor="companyName">Company Name</Label>
-            <Input
-              id="companyName"
-              name="companyName"
-              value={formData.companyName}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <div className="space-y-2">
-            <Label htmlFor="contactPerson">Contact Person</Label>
-            <Input
-              id="contactPerson"
-              name="contactPerson"
-              value={formData.contactPerson}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <div className="space-y-2">
-            <Label htmlFor="email">Email</Label>
-            <Input
-              id="email"
-              name="email"
-              type="email"
-              value={formData.email}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <div className="space-y-2">
-            <Label htmlFor="value">Deal Value ($)</Label>
-            <Input
-              id="value"
-              name="value"
-              type="number"
-              value={formData.value}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <div className="space-y-2">
-            <Label htmlFor="probability">Probability (%)</Label>
-            <Input
-              id="probability"
-              name="probability"
-              type="number"
-              min="0"
-              max="100"
-              value={formData.probability}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <div className="space-y-2">
-            <Label htmlFor="stage">Stage</Label>
-            <Select
-              value={formData.stage}
-              onValueChange={(value) =>
-                setFormData((prev) => ({ ...prev, stage: value }))
-              }
-            >
-              <SelectTrigger>
-                <SelectValue />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="initial">Initial Contact</SelectItem>
-                <SelectItem value="qualified">Qualified</SelectItem>
-                <SelectItem value="proposal">Proposal</SelectItem>
-                <SelectItem value="negotiation">Negotiation</SelectItem>
-                <SelectItem value="closed">Closed Won</SelectItem>
-                <SelectItem value="lost">Closed Lost</SelectItem>
-              </SelectContent>
-            </Select>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="space-y-2">
+              <Label htmlFor="companyName">Company Name</Label>
+              <Input
+                id="companyName"
+                name="companyName"
+                value={formData.companyName}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="contactPerson">Contact Person</Label>
+              <Input
+                id="contactPerson"
+                name="contactPerson"
+                value={formData.contactPerson}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="email">Email</Label>
+              <Input
+                id="email"
+                name="email"
+                type="email"
+                value={formData.email}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="endUserCountry">End User Country</Label>
+              <Input
+                id="endUserCountry"
+                name="endUserCountry"
+                value={formData.endUserCountry}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="value">Deal Value</Label>
+              <div className="flex gap-2">
+                <Input
+                  id="value"
+                  name="value"
+                  type="number"
+                  value={formData.value}
+                  onChange={handleChange}
+                  required
+                  className="flex-1"
+                />
+                <Select
+                  value={formData.currency}
+                  onValueChange={(value) =>
+                    setFormData((prev) => ({ ...prev, currency: value }))
+                  }
+                >
+                  <SelectTrigger className="w-24">
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="USD">USD</SelectItem>
+                    <SelectItem value="EUR">EUR</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+            </div>
+            <div className="space-y-2">
+              <Label>Margin Type</Label>
+              <RadioGroup
+                value={formData.marginType}
+                onValueChange={(value) =>
+                  setFormData((prev) => ({ ...prev, marginType: value }))
+                }
+                className="flex space-x-4"
+              >
+                <div className="flex items-center space-x-2">
+                  <RadioGroupItem value="percentage" id="percentage" />
+                  <Label htmlFor="percentage">Percentage</Label>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <RadioGroupItem value="absolute" id="absolute" />
+                  <Label htmlFor="absolute">Absolute</Label>
+                </div>
+              </RadioGroup>
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="margin">
+                Margin ({formData.marginType === "percentage" ? "%" : formData.currency})
+              </Label>
+              <Input
+                id="margin"
+                name="margin"
+                type="number"
+                value={formData.margin}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="probability">Probability (%)</Label>
+              <Input
+                id="probability"
+                name="probability"
+                type="number"
+                min="0"
+                max="100"
+                value={formData.probability}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="stage">Stage</Label>
+              <Select
+                value={formData.stage}
+                onValueChange={(value) =>
+                  setFormData((prev) => ({ ...prev, stage: value }))
+                }
+              >
+                <SelectTrigger>
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="Contact made">Contact made</SelectItem>
+                  <SelectItem value="Proposal Sent">Proposal Sent</SelectItem>
+                  <SelectItem value="Hot">Hot</SelectItem>
+                  <SelectItem value="Cold">Cold</SelectItem>
+                  <SelectItem value="Dead">Dead</SelectItem>
+                  <SelectItem value="Closed Won">Closed Won</SelectItem>
+                  <SelectItem value="Closed Lost">Closed Lost</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
           </div>
           <div className="space-y-2">
             <Label htmlFor="nextAction">Next Action</Label>

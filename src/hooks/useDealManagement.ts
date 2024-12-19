@@ -7,12 +7,17 @@ export interface Deal {
   contactPerson: string;
   email: string;
   value: number;
+  currency: "USD" | "EUR";
+  margin: number;
+  marginType: "percentage" | "absolute";
+  profit: number;
   stage: string;
   lastContact: string;
   probability: number;
   notes: string;
   nextAction: string;
   nextActionDate: string;
+  endUserCountry: string;
 }
 
 const initialDeals = [{
@@ -21,12 +26,17 @@ const initialDeals = [{
   contactPerson: "Marcus Weber",
   email: "m.weber@eds-ltd.eu",
   value: 130000,
-  stage: "proposal",
+  currency: "EUR",
+  margin: 25,
+  marginType: "percentage",
+  profit: 32500,
+  stage: "Hot",
   lastContact: "2024-03-15",
   probability: 75,
   notes: "Interested in 5.56mm NATO standard ammunition. Initial technical specifications reviewed and approved. Awaiting final budget approval from client's procurement department.",
   nextAction: "Follow up on procurement approval status",
-  nextActionDate: "2024-03-22"
+  nextActionDate: "2024-03-22",
+  endUserCountry: "Germany"
 }];
 
 export const useDealManagement = () => {
@@ -36,10 +46,16 @@ export const useDealManagement = () => {
     return savedDeals ? JSON.parse(savedDeals) : initialDeals;
   });
 
-  const addDeal = (deal: Omit<Deal, "id">) => {
+  const calculateProfit = (value: number, margin: number, marginType: "percentage" | "absolute") => {
+    return marginType === "percentage" ? (value * margin) / 100 : margin;
+  };
+
+  const addDeal = (deal: Omit<Deal, "id" | "profit">) => {
+    const profit = calculateProfit(deal.value, deal.margin, deal.marginType);
     const newDeal = {
       ...deal,
       id: Math.random().toString(36).substr(2, 9),
+      profit
     };
     const updatedDeals = [...deals, newDeal];
     setDeals(updatedDeals);

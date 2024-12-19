@@ -26,12 +26,13 @@ interface DealsTableProps {
 }
 
 const stageColors: Record<string, string> = {
-  initial: "bg-blue-100 text-blue-800",
-  qualified: "bg-purple-100 text-purple-800",
-  proposal: "bg-yellow-100 text-yellow-800",
-  negotiation: "bg-orange-100 text-orange-800",
-  closed: "bg-green-100 text-green-800",
-  lost: "bg-red-100 text-red-800",
+  "Contact made": "bg-blue-100 text-blue-800",
+  "Proposal Sent": "bg-purple-100 text-purple-800",
+  "Hot": "bg-yellow-100 text-yellow-800",
+  "Cold": "bg-orange-100 text-orange-800",
+  "Dead": "bg-gray-100 text-gray-800",
+  "Closed Won": "bg-green-100 text-green-800",
+  "Closed Lost": "bg-red-100 text-red-800",
 };
 
 const DealsTable = ({
@@ -47,7 +48,8 @@ const DealsTable = ({
       const matchesSearch = 
         deal.companyName.toLowerCase().includes(searchTerm.toLowerCase()) ||
         deal.contactPerson.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        deal.email.toLowerCase().includes(searchTerm.toLowerCase());
+        deal.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        deal.endUserCountry.toLowerCase().includes(searchTerm.toLowerCase());
       const matchesStage = stageFilter === "all" || !stageFilter ? true : deal.stage === stageFilter;
       return matchesSearch && matchesStage;
     })
@@ -65,6 +67,13 @@ const DealsTable = ({
       return 0;
     });
 
+  const formatCurrency = (value: number, currency: string) => {
+    return new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: currency,
+    }).format(value);
+  };
+
   return (
     <div className="rounded-lg border bg-white shadow-sm">
       <div className="overflow-x-auto">
@@ -73,7 +82,10 @@ const DealsTable = ({
             <TableRow className="bg-gray-50/80">
               <TableHead className="font-semibold text-gray-700 py-4">Company</TableHead>
               <TableHead className="font-semibold text-gray-700">Contact Person</TableHead>
+              <TableHead className="font-semibold text-gray-700">End User Country</TableHead>
               <TableHead className="font-semibold text-gray-700">Value</TableHead>
+              <TableHead className="font-semibold text-gray-700">Margin</TableHead>
+              <TableHead className="font-semibold text-gray-700">Profit</TableHead>
               <TableHead className="font-semibold text-gray-700">Probability</TableHead>
               <TableHead className="font-semibold text-gray-700">Stage</TableHead>
               <TableHead className="font-semibold text-gray-700">Next Action</TableHead>
@@ -89,8 +101,17 @@ const DealsTable = ({
                   <div className="text-gray-900">{deal.contactPerson}</div>
                   <div className="text-sm text-gray-500">{deal.email}</div>
                 </TableCell>
+                <TableCell className="text-gray-900">{deal.endUserCountry}</TableCell>
                 <TableCell className="font-medium text-gray-900">
-                  ${deal.value.toLocaleString()}
+                  {formatCurrency(deal.value, deal.currency)}
+                </TableCell>
+                <TableCell className="text-gray-900">
+                  {deal.marginType === 'percentage' 
+                    ? `${deal.margin}%` 
+                    : formatCurrency(deal.margin, deal.currency)}
+                </TableCell>
+                <TableCell className="font-medium text-gray-900">
+                  {formatCurrency(deal.profit, deal.currency)}
                 </TableCell>
                 <TableCell>
                   <Badge variant="secondary" className="font-medium">
@@ -106,12 +127,13 @@ const DealsTable = ({
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="initial">Initial Contact</SelectItem>
-                      <SelectItem value="qualified">Qualified</SelectItem>
-                      <SelectItem value="proposal">Proposal</SelectItem>
-                      <SelectItem value="negotiation">Negotiation</SelectItem>
-                      <SelectItem value="closed">Closed Won</SelectItem>
-                      <SelectItem value="lost">Closed Lost</SelectItem>
+                      <SelectItem value="Contact made">Contact made</SelectItem>
+                      <SelectItem value="Proposal Sent">Proposal Sent</SelectItem>
+                      <SelectItem value="Hot">Hot</SelectItem>
+                      <SelectItem value="Cold">Cold</SelectItem>
+                      <SelectItem value="Dead">Dead</SelectItem>
+                      <SelectItem value="Closed Won">Closed Won</SelectItem>
+                      <SelectItem value="Closed Lost">Closed Lost</SelectItem>
                     </SelectContent>
                   </Select>
                 </TableCell>
@@ -126,7 +148,7 @@ const DealsTable = ({
             ))}
             {filteredDeals.length === 0 && (
               <TableRow>
-                <TableCell colSpan={8} className="text-center py-8 text-gray-500">
+                <TableCell colSpan={11} className="text-center py-8 text-gray-500">
                   No deals found
                 </TableCell>
               </TableRow>
