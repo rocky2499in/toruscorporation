@@ -47,7 +47,7 @@ const WhyChooseSection = () => {
           
           <div className="relative">
             <img 
-              src="/lovable-uploads/a957c5ad-050e-450c-9ce2-626142113265.png"
+              src="/lovable-uploads/86238e68-c584-4431-a072-a04cc31a173b.png"
               alt="Torus Ammunition"
               className="w-full rounded-lg shadow-xl"
             />
