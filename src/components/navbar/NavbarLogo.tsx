@@ -4,7 +4,7 @@ const NavbarLogo = () => {
   return (
     <Link to="/" className="flex items-center">
       <img 
-        src="/lovable-uploads/8239c17b-df42-4340-a4d6-f4302fb7c132.png" 
+        src="/lovable-uploads/ca6f0747-c712-4d67-b64f-5460e4f48a21.png" 
         alt="Torus Defence & Strategies" 
         className="h-12 w-auto"
       />
