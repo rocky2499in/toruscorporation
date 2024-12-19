@@ -52,7 +52,7 @@ const HeroSection = () => {
   }, [api]);
 
   return (
-    <div className="relative overflow-hidden min-h-screen"> {/* Removed pt-24 and bg-secondary */}
+    <div className="relative overflow-hidden min-h-screen">
       {/* Bullet animation elements */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="bullet-trail absolute h-1 w-8 bg-primary rounded-full animate-bullet-1"></div>
@@ -70,7 +70,7 @@ const HeroSection = () => {
             {slides.map((slide, index) => (
               <CarouselItem key={index} className="h-full">
                 <div 
-                  className="text-center animate-fade-up min-h-screen flex flex-col items-center justify-center relative" 
+                  className="text-center animate-fade-up min-h-screen flex flex-col items-center justify-center relative transition-all duration-[3000ms] ease-in-out" 
                   style={{
                     backgroundImage: `url(${slide.bgImage})`,
                     backgroundSize: 'cover',
