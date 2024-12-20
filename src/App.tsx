@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { StrictMode } from "react";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import CookieBanner from "./components/CookieBanner";
 import Index from "./pages/Index";
 import AboutUs from "./pages/AboutUs";
 import Products from "./pages/Products";
@@ -41,7 +42,7 @@ const App = () => {
               <Toaster />
               <Sonner />
               <Navbar />
-              <main className="flex-grow">
+              <main className="flex-grow pt-20">
                 <Routes>
                   <Route path="/" element={<Index />} />
                   <Route path="/about" element={<AboutUs />} />
@@ -62,6 +63,7 @@ const App = () => {
                 </Routes>
               </main>
               <Footer />
+              <CookieBanner />
             </div>
           </TooltipProvider>
         </QueryClientProvider>
