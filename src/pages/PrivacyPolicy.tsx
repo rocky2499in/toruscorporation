@@ -24,9 +24,6 @@ const PrivacyPolicy = () => {
 
         <div className="mb-8">
           <h2 className="text-2xl font-semibold mb-4">SUMMARY OF KEY POINTS</h2>
-          <p className="mb-4">
-            This summary provides key points from our privacy notice, but you can find out more details about any of these topics by clicking the link following each key point or by using our table of contents below to find the section you are looking for.
-          </p>
           <ul className="list-disc pl-6 space-y-2">
             <li><strong>What personal information do we process?</strong> When you visit, use, or navigate our Services, we may process personal information depending on how you interact with Torus GmbH and the Services, the choices you make, and the products and features you use.</li>
             <li><strong>Do we process any sensitive personal information?</strong> We do not process sensitive personal information.</li>
@@ -42,7 +39,9 @@ const PrivacyPolicy = () => {
           <ol className="list-decimal pl-6 space-y-2">
             {Array.from({ length: 14 }, (_, i) => i + 1).map((num) => (
               <li key={num} className="hover:text-primary cursor-pointer">
-                {num}. {getPrivacySection(num)}
+                <a href={`#section-${num}`} className="hover:underline">
+                  {num}. {getPrivacySection(num)}
+                </a>
               </li>
             ))}
           </ol>
@@ -50,7 +49,7 @@ const PrivacyPolicy = () => {
 
         {/* Privacy Policy Sections */}
         {Array.from({ length: 14 }, (_, i) => i + 1).map((num) => (
-          <section key={num} className="mb-12">
+          <section key={num} id={`section-${num}`} className="mb-12">
             <h2 className="text-2xl font-semibold mb-4">{num}. {getPrivacySection(num)}</h2>
             {renderPrivacySection(num)}
           </section>
@@ -107,16 +106,161 @@ const renderPrivacySection = (num: number): JSX.Element => {
             <li>mailing addresses</li>
             <li>billing addresses</li>
           </ul>
+          <h4 className="text-lg font-semibold mb-2">Sensitive Information</h4>
+          <p className="mb-4">We do not process sensitive information.</p>
+          <h4 className="text-lg font-semibold mb-2">Payment Data</h4>
+          <p className="mb-4">
+            We may collect data necessary to process your payment if you make purchases, such as your payment instrument
+            number (such as a credit card number), and the security code associated with your payment instrument.
+            All payment data is stored by PayPal. You may find their privacy notice link(s) here:
+            <a href="https://www.paypal.com/uk/webapps/mpp/ua/privacy-full" className="text-blue-600 hover:underline ml-1">
+              https://www.paypal.com/uk/webapps/mpp/ua/privacy-full
+            </a>.
+          </p>
         </div>
       );
-    // Add cases for other sections as needed
-    case 13:
+    case 2:
+      return (
+        <div>
+          <p className="mb-4"><em>In Short: We process your information to provide, improve, and administer our Services, communicate with you, for security and fraud prevention, and to comply with law.</em></p>
+          <p className="mb-4">
+            We process your personal information for a variety of reasons, depending on how you interact with our Services, including:
+          </p>
+          <ul className="list-disc pl-6 space-y-2">
+            <li>To facilitate account creation and authentication and otherwise manage user accounts</li>
+            <li>To send you marketing and promotional communications</li>
+            <li>To protect our Services</li>
+            <li>To save or protect an individual's vital interest</li>
+          </ul>
+        </div>
+      );
+    case 3:
+      return (
+        <div>
+          <p className="mb-4"><em>In Short: We only process your personal information when we believe it is necessary and we have a valid legal reason.</em></p>
+          <p className="mb-4">
+            If you are located in the EU or UK, this section applies to you. The General Data Protection Regulation (GDPR)
+            and UK GDPR require us to explain the valid legal bases we rely on in order to process your personal information.
+          </p>
+          <h4 className="text-lg font-semibold mb-2">Legal Bases for Processing</h4>
+          <ul className="list-disc pl-6 space-y-2">
+            <li>Consent</li>
+            <li>Legitimate Interests</li>
+            <li>Legal Obligations</li>
+            <li>Vital Interests</li>
+          </ul>
+        </div>
+      );
+    case 4:
+      return (
+        <div>
+          <p className="mb-4"><em>In Short: We may share information in specific situations and with specific third parties.</em></p>
+          <p className="mb-4">
+            We may need to share your personal information in the following situations:
+          </p>
+          <ul className="list-disc pl-6">
+            <li>Business Transfers: We may share or transfer your information in connection with, or during negotiations of,
+                any merger, sale of company assets, financing, or acquisition of all or a portion of our business to another company.</li>
+          </ul>
+        </div>
+      );
+    case 5:
+      return (
+        <div>
+          <p className="mb-4"><em>In Short: We may use cookies and other tracking technologies to collect and store your information.</em></p>
+          <p>
+            We may use cookies and similar tracking technologies (like web beacons and pixels) to access or store information.
+            Specific information about how we use such technologies and how you can refuse certain cookies is set out in our Cookie Notice.
+          </p>
+        </div>
+      );
+    case 6:
+      return (
+        <div>
+          <p className="mb-4"><em>In Short: We keep your information for as long as necessary to fulfill the purposes outlined in this privacy notice unless otherwise required by law.</em></p>
+          <p className="mb-4">
+            We will only keep your personal information for as long as it is necessary for the purposes set out in this privacy notice,
+            unless a longer retention period is required or permitted by law.
+          </p>
+        </div>
+      );
+    case 7:
+      return (
+        <div>
+          <p className="mb-4"><em>In Short: We aim to protect your personal information through a system of organizational and technical security measures.</em></p>
+          <p className="mb-4">
+            We have implemented appropriate and reasonable technical and organizational security measures designed to protect
+            the security of any personal information we process. However, despite our safeguards and efforts to secure your
+            information, no electronic transmission over the Internet or information storage technology can be guaranteed to
+            be 100% secure.
+          </p>
+        </div>
+      );
+    case 8:
+      return (
+        <div>
+          <p className="mb-4"><em>In Short: We do not knowingly collect data from or market to children under 18 years of age.</em></p>
+          <p className="mb-4">
+            We do not knowingly solicit data from or market to children under 18 years of age. By using the Services,
+            you represent that you are at least 18 or that you are the parent or guardian of such a minor and consent to
+            such minor dependent's use of the Services.
+          </p>
+        </div>
+      );
+    case 9:
+      return (
+        <div>
+          <p className="mb-4"><em>In Short: You have certain rights regarding your personal information.</em></p>
+          <p className="mb-4">
+            In some regions (like the EEA, UK, and Canada), you have certain rights under applicable data protection laws.
+            These may include the right to:
+          </p>
+          <ul className="list-disc pl-6 space-y-2">
+            <li>Request access to your personal information</li>
+            <li>Request rectification or erasure of your personal information</li>
+            <li>Restrict the processing of your personal information</li>
+            <li>Data portability</li>
+            <li>Object to processing of your personal information</li>
+          </ul>
+        </div>
+      );
+    case 10:
       return (
         <div>
           <p className="mb-4">
-            If you have questions or comments about this notice, you may email us at info@torus.eu or by post to:
+            Most web browsers and some mobile operating systems and mobile applications include a Do-Not-Track ('DNT')
+            feature or setting you can activate to signal your privacy preference not to have data about your online
+            browsing activities monitored and collected.
           </p>
+        </div>
+      );
+    case 11:
+      return (
+        <div>
+          <p className="mb-4"><em>In Short: Yes, if you are a resident of California, you are granted specific rights regarding access to your personal information.</em></p>
+          <p className="mb-4">
+            California Civil Code Section 1798.83, also known as the 'Shine The Light' law, permits our users who are
+            California residents to request and obtain from us information about personal data we disclose to third parties.
+          </p>
+        </div>
+      );
+    case 12:
+      return (
+        <div>
+          <p className="mb-4"><em>In Short: Yes, we will update this notice as necessary to stay compliant with relevant laws.</em></p>
+          <p className="mb-4">
+            We may update this privacy notice from time to time. The updated version will be indicated by an updated
+            'Revised' date and the updated version will be effective as soon as it is accessible.
+          </p>
+        </div>
+      );
+    case 13:
+      return (
+        <div>
+          <p className="mb-4">If you have questions or comments about this notice, you may contact us:</p>
           <div className="mb-4">
+            <p>By email: info@torus.eu</p>
+            <p>By mail:</p>
             <p>Torus GmbH</p>
             <p>Ostermoos 1</p>
             <p>Hattenhofen, Bavaria 82285</p>
@@ -127,10 +271,13 @@ const renderPrivacySection = (num: number): JSX.Element => {
     case 14:
       return (
         <div>
-          <p>
+          <p className="mb-4">
             Based on the applicable laws of your country, you may have the right to request access to the personal
             information we collect from you, change that information, or delete it. To request to review, update, or
-            delete your personal information, please visit: https://torus.eu/contact/.
+            delete your personal information, please visit:
+            <a href="https://torus.eu/contact/" className="text-blue-600 hover:underline ml-1">
+              https://torus.eu/contact/
+            </a>
           </p>
         </div>
       );
