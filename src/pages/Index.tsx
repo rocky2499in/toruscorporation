@@ -3,6 +3,7 @@ import ProductOverview from "@/components/home/ProductOverview";
 import WhyChooseSection from "@/components/home/WhyChooseSection";
 import ServicesSection from "@/components/home/ServicesSection";
 import CommitmentSection from "@/components/home/CommitmentSection";
+import InstagramFeed from "@/components/home/InstagramFeed";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 
@@ -28,9 +29,13 @@ const Index = () => {
       <div className="animate-fade-up [animation-delay:1000ms]">
         <ServicesSection />
       </div>
+
+      <div className="animate-fade-up [animation-delay:1200ms]">
+        <InstagramFeed />
+      </div>
       
       {/* CTA Section */}
-      <div className="py-16 bg-secondary animate-fade-up [animation-delay:1200ms]">
+      <div className="py-16 bg-secondary animate-fade-up [animation-delay:1400ms]">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold text-white mb-6">
             Ready to Work Together?
