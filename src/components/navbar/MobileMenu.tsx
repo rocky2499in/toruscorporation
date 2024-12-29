@@ -20,9 +20,8 @@ const MobileMenu = ({ isOpen, isAdmin, onLoginClick, onItemClick }: MobileMenuPr
           <div key={item.path}>
             {item.submenu ? (
               <AccordionItem value={item.title} className="border-none">
-                <AccordionTrigger className="text-white hover:text-primary py-2 hover:no-underline">
+                <AccordionTrigger className="text-white hover:text-primary py-2 hover:no-underline text-sm uppercase tracking-wider">
                   <div className="flex items-center gap-2">
-                    <item.icon size={18} />
                     <span>{item.title}</span>
                   </div>
                 </AccordionTrigger>
@@ -32,10 +31,9 @@ const MobileMenu = ({ isOpen, isAdmin, onLoginClick, onItemClick }: MobileMenuPr
                       <Link
                         key={subItem.title}
                         to={subItem.path}
-                        className="text-white/80 hover:text-primary transition-colors flex items-center gap-2 py-2"
+                        className="text-white/80 hover:text-primary transition-colors flex items-center gap-2 py-2 text-sm"
                         onClick={onItemClick}
                       >
-                        {subItem.icon && <subItem.icon size={16} />}
                         {subItem.title}
                       </Link>
                     ))}
@@ -45,10 +43,9 @@ const MobileMenu = ({ isOpen, isAdmin, onLoginClick, onItemClick }: MobileMenuPr
             ) : (
               <Link
                 to={item.path}
-                className="text-white hover:text-primary transition-colors flex items-center gap-2 py-2"
+                className="text-white hover:text-primary transition-colors flex items-center gap-2 py-2 text-sm uppercase tracking-wider"
                 onClick={onItemClick}
               >
-                <item.icon size={18} />
                 <span>{item.title}</span>
               </Link>
             )}
@@ -57,10 +54,10 @@ const MobileMenu = ({ isOpen, isAdmin, onLoginClick, onItemClick }: MobileMenuPr
         {isAdmin ? (
           <Link
             to="/admin/dashboard"
-            className="text-white hover:text-primary hover:bg-white/5 transition-colors px-4 py-2 flex items-center gap-3"
+            className="text-white hover:text-primary hover:bg-white/5 transition-colors px-4 py-2 flex items-center gap-3 text-sm uppercase tracking-wider"
             onClick={onItemClick}
           >
-            <LayoutDashboard size={18} />
+            <LayoutDashboard size={16} />
             Dashboard
           </Link>
         ) : (
@@ -69,9 +66,9 @@ const MobileMenu = ({ isOpen, isAdmin, onLoginClick, onItemClick }: MobileMenuPr
               onItemClick();
               onLoginClick();
             }}
-            className="text-white hover:text-primary hover:bg-white/5 transition-colors px-4 py-2 flex items-center gap-3 w-full text-left"
+            className="text-white hover:text-primary hover:bg-white/5 transition-colors px-4 py-2 flex items-center gap-3 w-full text-left text-sm uppercase tracking-wider"
           >
-            <LogIn size={18} />
+            <LogIn size={16} />
             Login
           </button>
         )}

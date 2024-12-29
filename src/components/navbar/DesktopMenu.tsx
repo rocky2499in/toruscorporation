@@ -10,27 +10,25 @@ interface DesktopMenuProps {
 
 const DesktopMenu = ({ isAdmin, onLoginClick }: DesktopMenuProps) => {
   return (
-    <div className="hidden md:flex items-center space-x-6">
-      <Accordion type="single" collapsible className="flex items-center space-x-6">
+    <div className="hidden md:flex items-center space-x-8">
+      <Accordion type="single" collapsible className="flex items-center space-x-8">
         {menuItems.map((item) => (
-          <div key={item.path}>
+          <div key={item.path} className="relative group">
             {item.submenu ? (
               <AccordionItem value={item.title} className="border-none">
-                <AccordionTrigger className="text-white hover:text-primary py-2 hover:no-underline">
+                <AccordionTrigger className="text-white hover:text-primary py-2 hover:no-underline text-sm uppercase tracking-wider">
                   <div className="flex items-center gap-2">
-                    <item.icon size={18} />
                     <span>{item.title}</span>
                   </div>
                 </AccordionTrigger>
-                <AccordionContent className="absolute mt-2 bg-secondary/95 backdrop-blur-sm rounded-lg shadow-xl border border-white/10 p-4">
+                <AccordionContent className="absolute mt-2 bg-secondary/95 backdrop-blur-sm rounded-lg shadow-xl border border-white/10 p-4 min-w-[200px]">
                   <div className="space-y-2">
                     {item.submenu.map((subItem) => (
                       <Link
                         key={subItem.title}
                         to={subItem.path}
-                        className="text-white/80 hover:text-primary transition-colors flex items-center gap-2 py-2"
+                        className="text-white/80 hover:text-primary transition-colors flex items-center gap-2 py-2 text-sm whitespace-nowrap"
                       >
-                        {subItem.icon && <subItem.icon size={16} />}
                         {subItem.title}
                       </Link>
                     ))}
@@ -40,11 +38,8 @@ const DesktopMenu = ({ isAdmin, onLoginClick }: DesktopMenuProps) => {
             ) : (
               <Link
                 to={item.path}
-                className="text-white hover:text-primary transition-colors flex items-center gap-2 group"
+                className="text-white hover:text-primary transition-colors text-sm uppercase tracking-wider"
               >
-                <span className="group-hover:scale-110 transition-transform duration-200">
-                  <item.icon size={18} />
-                </span>
                 <span>{item.title}</span>
               </Link>
             )}
@@ -53,21 +48,17 @@ const DesktopMenu = ({ isAdmin, onLoginClick }: DesktopMenuProps) => {
         {isAdmin ? (
           <Link
             to="/admin/dashboard"
-            className="text-white hover:text-primary transition-colors flex items-center gap-2 group"
+            className="text-white hover:text-primary transition-colors text-sm uppercase tracking-wider flex items-center gap-2"
           >
-            <span className="group-hover:scale-110 transition-transform duration-200">
-              <LayoutDashboard size={18} />
-            </span>
+            <LayoutDashboard size={16} />
             <span>Dashboard</span>
           </Link>
         ) : (
           <button
             onClick={onLoginClick}
-            className="text-white hover:text-primary transition-colors flex items-center gap-2 group"
+            className="text-white hover:text-primary transition-colors text-sm uppercase tracking-wider flex items-center gap-2"
           >
-            <span className="group-hover:scale-110 transition-transform duration-200">
-              <LogIn size={18} />
-            </span>
+            <LogIn size={16} />
             <span>Login</span>
           </button>
         )}
